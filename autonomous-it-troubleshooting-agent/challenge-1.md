@@ -7,8 +7,8 @@ In this challenge, you will create an AI-powered IT Support Copilot using Micros
 
 ## Challenge Objectives
 - Sign in to Microsoft Copilot Studio
-- Create a new Copilot for IT support automation
-- Configure basic copilot settings and identity
+- Create a new agent for IT support automation
+- Configure basic agent settings and identity
 - Upload IT_Support_QA.pdf knowledge base for intelligent responses
 
 ## Accessing the Datasets
@@ -21,25 +21,40 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ## Steps to Complete
 
-### Step 1: Create a New Copilot
+### Step 1: Create a New Agent
 
-1. Open **Microsoft Copilot Studio**.
+1. Open **Microsoft Edge** browser in your lab VM.
 
-1. On the Copilot Studio pane, from left menu select **Create** and then click on **+New Agent** option to create a new agent.
+1. If not already open, navigate to **Microsoft Copilot Studio** by entering the following URL in the browser:
 
-1. If any error shows up like `There was a problem creating your agent.`, then please click on **Create a blank agent**.
+   ```
+   https://copilotstudio.microsoft.com
+   ```
 
-1. On the overview pane of the agent, click on **edit** inside Details card to edit agent's name and description.
+1. Click **Sign in**.
 
-1. Configure the Copilot details as below:
+1. Enter the provided credentials:
+
+   - **Email/Username: <inject key="AzureAdUserEmail"></inject>**
+   - **Password: <inject key="AzureAdUserPassword"></inject>**
+
+1. If prompted with **"Stay signed in?"**, click **No**.
+
+1. Wait for the Copilot Studio home page to load.
+
+1. In Copilot Studio, select **Agents** from the left navigation pane, and then click **Create blank agent** to start creating a new agent.
+
+1. On the overview pane of the agent, click on **edit** inside the Details card to edit the agent's name and description.
+
+1. Configure the agent details as follows:
 
    - **Name:** `IT Support Copilot`
 
    - **Description:** `AI-powered assistant for IT support automation including password resets, VPN issues, laptop troubleshooting, and printer support.`
 
-1. Click on save.
+1. Click on **Save**.
 
-1. Once done, scroll down and add below **instructions** by clicking on **edit** inside Instruction card.
+1. Once done, scroll down and add the following **instructions** by clicking on **edit** inside the Instruction card.
 
      ```
      - You are an IT Support Copilot designed to help employees resolve common IT issues quickly and efficiently.
@@ -65,25 +80,23 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
      - When creating tickets, generate clear subject lines and detailed descriptions with all relevant information
      ```
 
-1. Click on save.
+1. Click on **Save**.
 
 ### Step 2: Upload Knowledge Base
 
-1. From the Copilot Studio home screen, open the **IT Support Copilot** you just created.
+1. From the Copilot Studio home screen, open the **IT Support Copilot** agent created in Step 1.
 
-1. In top navigation bar, select **Knowledge**.
+1. In the top navigation bar, select **Knowledge**.
 
-1. Click **+ Add knowledge** or **+ Add a knowledge source**.
+1. Click **+ Add Knowledge**.
 
-1. Choose **Upload files** or **Files**.
+1. Choose **Upload files**.
 
-1. Click **Browse** and navigate to the extracted dataset folder from Step 1.
-
-1. Upload the files.
+1. Upload the files from the dataset you downloaded and extracted earlier.
 
 1. After uploading, verify the file shows the status **Ready** or **Synced**.
 
-   > **Note:** The knowledge base may take 15-25 minutes to process and index. You can proceed to the next challenge while the knowledge base finishes processing.
+   > **Note:** It may take up to 30 minutes for files to finish processing. You can proceed with the next challenge while the files are being processed.
 
 <validation step="0e6f0182-dd4d-402d-b9fc-b85a2a89e95d" />
  
@@ -93,13 +106,9 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
 
 ## Success Criteria
-- Successfully signed in to Microsoft Copilot Studio
+
 - Created a new agent named **IT Support Copilot**
-- Configured agent with appropriate description and instructions for IT support scenarios
-- Downloaded and extracted IT support dataset
-- Uploaded **IT_Support_QA.pdf** as knowledge source
-- Verified knowledge base is processing (status will show **Ready** after 2-5 minutes)
-- Knowledge base is now available for use in topics
+- Knowledge base files uploaded and status shows **Ready**
 
 ## Additional Resources
 - [Microsoft Copilot Studio Overview](https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-what-is-copilot-studio)  
