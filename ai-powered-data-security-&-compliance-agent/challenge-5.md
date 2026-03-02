@@ -195,7 +195,7 @@ The application code is provided in a pre-built package.
    Access the link below using your browser:
 
    ```
-   https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/ai-powered-data-security.zip
+   https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/security-&-compliance-agent.zip
    ```
 
 1. **Extract the ZIP file**:
