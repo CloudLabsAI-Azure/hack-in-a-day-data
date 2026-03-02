@@ -65,33 +65,30 @@ Your three-agent pipeline is operational. All the application code has been buil
 
 1. Search for **Parse JSON** action and select it.
 
-1. In the **Content** field, click the dynamic content panel and select **Body** from the Event Grid trigger output.
+1. In the **Content** field, click the dynamic content panel. Under **When a resource event occurs**, select **Event data** (not Body).
+
+   > **Important:** The Event Grid trigger already decomposes the event envelope into separate fields (Event data, Event Type, Subject, etc.). The **Event data** field contains the custom data payload where severity lives. Do NOT select Body — that would give you the full event envelope and the nested fields would not be directly accessible.
 
 1. In the **Schema** field, click **Use sample payload to generate schema** and paste the following sample payload:
 
    ```json
-   [{
-     "id": "sample-event-001",
-     "eventType": "SecurityAlert.Critical",
-     "subject": "security/risk-detection/critical",
-     "data": {
-       "alert_id": "ALERT-001",
-       "severity": "CRITICAL",
-       "risk_id": "ACT-001",
-       "description": "Intern bulk-exported 48500 rows of PII/PCI data at 2:47 AM",
-       "user": "jake.morrison",
-       "role": "Intern",
-       "affected_data": ["SSN", "CreditCardNumber", "CVV"],
-       "timestamp": "2025-06-15T02:47:00Z",
-       "requires_approval": true,
-       "scan_id": "scan-20250615-001"
-     },
-     "eventTime": "2025-06-15T02:47:00Z",
-     "dataVersion": "1.0"
-   }]
+   {
+     "alert_id": "ALERT-001",
+     "severity": "CRITICAL",
+     "risk_id": "ACT-001",
+     "description": "Intern bulk-exported 48500 rows of PII/PCI data at 2:47 AM",
+     "user": "jake.morrison",
+     "role": "Intern",
+     "affected_data": ["SSN", "CreditCardNumber", "CVV"],
+     "timestamp": "2025-06-15T02:47:00Z",
+     "requires_approval": true,
+     "scan_id": "scan-20250615-001"
+   }
    ```
 
-1. Click **Done** to generate the schema.
+   > **Note:** This is just the `data` portion of the Event Grid event — not the full event object. Since the trigger already extracts Event data for you, you only need to parse the inner payload.
+
+1. Click **Done** to generate the schema. You should see fields like `severity`, `alert_id`, `description`, `user`, `role`, etc. in the generated schema.
 
 ### Task 4: Configure Logic App — Condition and Actions
 
@@ -111,34 +108,39 @@ Your three-agent pipeline is operational. All the application code has been buil
 
    - **Connection Name**: Enter `SecurityCosmosDB`
    - **Authentication Type**: Select **Access Key**
-   - **Account ID**: Enter your Cosmos DB account name: `security-agent-cosmos-<inject key="DeploymentID" enableCopy="false"/>`
-   - **Access Key to your Azure Cosmos DB account**: Paste the **PRIMARY KEY** you saved from Challenge 1
+   - **Account ID**: Enter your Cosmos DB account name: **security-agent-cosmos-<inject key="DeploymentID" enableCopy="false"/>**
+   - **Access Key to your Azure Cosmos DB account**: Paste the **PRIMARY KEY** you saved from Challenge 1 (not the connection string — use the key only)
    - Click **Create**.
+
+   > **Troubleshooting:** If you get a **Forbidden** error about the request being blocked by firewall settings, go to your Cosmos DB account → **Networking** → set **Public network access** to **All networks** → click **Save**. Wait 1-2 minutes, then retry creating the connection.
 
 1. Configure the Cosmos DB action:
 
-   - **Database ID**: Select **SecurityAgentDB** or enter `SecurityAgentDB`
-   - **Container ID**: Select **SecurityAlerts** or enter `SecurityAlerts`
-   - **Document**: Enter the following (use dynamic content where indicated):
+   - **Database ID**: Click the dropdown and select **SecurityAgentDB**
+   - **Collection ID**: Click the dropdown and select **SecurityAlerts**
+
+      > **Note:** The Logic App UI uses the older Cosmos DB terminology "Collection ID" — this is the same as "Container ID".
+
+   - **Document**: Paste the following JSON:
 
      ```json
      {
        "id": "@{guid()}",
-       "alertId": "@{body('Parse_JSON')?[0]?['data']?['alert_id']}",
-       "severity": "@{body('Parse_JSON')?[0]?['data']?['severity']}",
-       "description": "@{body('Parse_JSON')?[0]?['data']?['description']}",
-       "user": "@{body('Parse_JSON')?[0]?['data']?['user']}",
-       "role": "@{body('Parse_JSON')?[0]?['data']?['role']}",
-       "timestamp": "@{body('Parse_JSON')?[0]?['data']?['timestamp']}",
-       "scanId": "@{body('Parse_JSON')?[0]?['data']?['scan_id']}",
+       "alertId": "@{body('Parse_JSON')?['alert_id']}",
+       "severity": "@{body('Parse_JSON')?['severity']}",
+       "description": "@{body('Parse_JSON')?['description']}",
+       "user": "@{body('Parse_JSON')?['user']}",
+       "role": "@{body('Parse_JSON')?['role']}",
+       "timestamp": "@{body('Parse_JSON')?['timestamp']}",
+       "scanId": "@{body('Parse_JSON')?['scan_id']}",
        "status": "OPEN",
        "processedAt": "@{utcNow()}"
      }
      ```
 
-   - **Partition Key Value**: Enter `CRITICAL`
+   > **Note:** You do not need to set a Partition Key Value. The V3 connector automatically derives it from the document's `severity` field, which matches the container's partition key path (`/severity`).
 
-   > **Note:** If you see a multi-line text box, click **Switch to input text format** to enter the JSON directly. You can also use the **Code view** to paste the JSON directly.
+   > **Note:** If you see a multi-line text box for the Document field, click **Switch to input text format** to enter the JSON directly. You can also use the **Code view** tab at the top to paste the JSON directly.
 
 1. In the **If false** branch (for non-CRITICAL alerts), click **Add an action**.
 
@@ -146,26 +148,26 @@ Your three-agent pipeline is operational. All the application code has been buil
 
 1. Use the same connection and configure:
 
-   - **Database ID**: `SecurityAgentDB`
-   - **Container ID**: `SecurityAlerts`
-   - **Document**:
+   - **Database ID**: Select **SecurityAgentDB**
+   - **Collection ID**: Select **SecurityAlerts**
+   - **Document**: Paste the same JSON as the If true branch:
 
      ```json
      {
        "id": "@{guid()}",
-       "alertId": "@{body('Parse_JSON')?[0]?['data']?['alert_id']}",
-       "severity": "@{body('Parse_JSON')?[0]?['data']?['severity']}",
-       "description": "@{body('Parse_JSON')?[0]?['data']?['description']}",
-       "user": "@{body('Parse_JSON')?[0]?['data']?['user']}",
-       "role": "@{body('Parse_JSON')?[0]?['data']?['role']}",
-       "timestamp": "@{body('Parse_JSON')?[0]?['data']?['timestamp']}",
-       "scanId": "@{body('Parse_JSON')?[0]?['data']?['scan_id']}",
+       "alertId": "@{body('Parse_JSON')?['alert_id']}",
+       "severity": "@{body('Parse_JSON')?['severity']}",
+       "description": "@{body('Parse_JSON')?['description']}",
+       "user": "@{body('Parse_JSON')?['user']}",
+       "role": "@{body('Parse_JSON')?['role']}",
+       "timestamp": "@{body('Parse_JSON')?['timestamp']}",
+       "scanId": "@{body('Parse_JSON')?['scan_id']}",
        "status": "OPEN",
        "processedAt": "@{utcNow()}"
      }
      ```
 
-   - **Partition Key Value**: Enter `HIGH`
+   > **Note:** As with the If true branch, you do not need to set a Partition Key Value — the connector derives it automatically from the `severity` field in the document.
 
 1. Click **Save** at the top of the Logic App designer to save the workflow.
 
@@ -193,7 +195,7 @@ The application code is provided in a pre-built package.
    Access the link below using your browser:
 
    ```
-   https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/ai-powered-data-security.zip
+   https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/security-&-compliance-agent.zip
    ```
 
 1. **Extract the ZIP file**:
