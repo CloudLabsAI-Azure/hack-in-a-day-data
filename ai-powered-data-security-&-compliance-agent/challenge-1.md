@@ -148,12 +148,7 @@ Before building the AI-powered Data Security Agent, you need to provision the ne
 1. Configure the database:
 
    - **Database id**: `SecurityAgentDB`
-   - Enable **Provision throughput** checkbox.
-   - Database throughput: Select **Manual**.
-   - **Database Required RU/s**: `400`
    - Click **OK**
-
-      > **Important**: Do not set the RU/s value higher than `400`.
 
 1. Create the first container for scan results:
 
