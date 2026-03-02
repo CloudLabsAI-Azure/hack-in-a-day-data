@@ -1,6 +1,6 @@
-# IT Support Copilot with Microsoft Copilot Studio
+# Autonomous IT Troubleshooting Agent with Microsoft Copilot Studio
 
-Welcome to the IT Support Copilot Hack in a Day! Today, you'll learn how to build an intelligent, conversational AI assistant that helps employees resolve common IT support issues instantly. Through this hands-on experience, you'll create a copilot that answers questions from knowledge base documents, guides users through troubleshooting steps, and automatically sends resolution summaries to your IT team.
+Welcome to the Autonomous IT Troubleshooting Copilot Hack in a Day! Today, you'll learn how to build an intelligent, conversational AI assistant that helps employees resolve common IT support issues instantly. Through this hands-on experience, you'll create a copilot that answers questions from knowledge base documents, guides users through troubleshooting steps, and automatically sends resolution summaries to your IT team.
 
 ## Scenario
 
