@@ -109,14 +109,19 @@ Your three-agent pipeline is operational. All the application code has been buil
    - **Connection Name**: Enter `SecurityCosmosDB`
    - **Authentication Type**: Select **Access Key**
    - **Account ID**: Enter your Cosmos DB account name: **security-agent-cosmos-<inject key="DeploymentID" enableCopy="false"/>**
-   - **Access Key to your Azure Cosmos DB account**: Paste the **PRIMARY KEY** you saved from Challenge 1
+   - **Access Key to your Azure Cosmos DB account**: Paste the **PRIMARY KEY** you saved from Challenge 1 (not the connection string — use the key only)
    - Click **Create**.
+
+   > **Troubleshooting:** If you get a **Forbidden** error about the request being blocked by firewall settings, go to your Cosmos DB account → **Networking** → set **Public network access** to **All networks** → click **Save**. Wait 1-2 minutes, then retry creating the connection.
 
 1. Configure the Cosmos DB action:
 
-   - **Database ID**: Select **SecurityAgentDB** or enter `SecurityAgentDB`
-   - **Container ID**: Select **SecurityAlerts** or enter `SecurityAlerts`
-   - **Document**: Enter the following (use dynamic content where indicated):
+   - **Database ID**: Click the dropdown and select **SecurityAgentDB**
+   - **Collection ID**: Click the dropdown and select **SecurityAlerts**
+
+      > **Note:** The Logic App UI uses the older Cosmos DB terminology "Collection ID" — this is the same as "Container ID".
+
+   - **Document**: Paste the following JSON:
 
      ```json
      {
@@ -133,9 +138,9 @@ Your three-agent pipeline is operational. All the application code has been buil
      }
      ```
 
-   - **Partition Key Value**: Enter `CRITICAL`
+   > **Note:** You do not need to set a Partition Key Value. The V3 connector automatically derives it from the document's `severity` field, which matches the container's partition key path (`/severity`).
 
-   > **Note:** If you see a multi-line text box, click **Switch to input text format** to enter the JSON directly. You can also use the **Code view** to paste the JSON directly.
+   > **Note:** If you see a multi-line text box for the Document field, click **Switch to input text format** to enter the JSON directly. You can also use the **Code view** tab at the top to paste the JSON directly.
 
 1. In the **If false** branch (for non-CRITICAL alerts), click **Add an action**.
 
@@ -143,9 +148,9 @@ Your three-agent pipeline is operational. All the application code has been buil
 
 1. Use the same connection and configure:
 
-   - **Database ID**: `SecurityAgentDB`
-   - **Container ID**: `SecurityAlerts`
-   - **Document**:
+   - **Database ID**: Select **SecurityAgentDB**
+   - **Collection ID**: Select **SecurityAlerts**
+   - **Document**: Paste the same JSON as the If true branch:
 
      ```json
      {
@@ -162,7 +167,7 @@ Your three-agent pipeline is operational. All the application code has been buil
      }
      ```
 
-   - **Partition Key Value**: Enter `HIGH`
+   > **Note:** As with the If true branch, you do not need to set a Partition Key Value — the connector derives it automatically from the `severity` field in the document.
 
 1. Click **Save** at the top of the Logic App designer to save the workflow.
 

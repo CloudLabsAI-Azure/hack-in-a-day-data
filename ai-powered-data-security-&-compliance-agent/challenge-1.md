@@ -168,6 +168,14 @@ Before building the AI-powered Data Security Agent, you need to provision the ne
 
 1. Verify both containers are visible in Data Explorer under SecurityAgentDB.
 
+1. Navigate to **Networking** in the left menu under **Settings**.
+
+1. Under **Public network access**, select **All networks**.
+
+1. Click **Save** and wait for the update to apply.
+
+   > **Important:** This is required so that the Logic App (created in Challenge 5) can connect to Cosmos DB. If public network access is restricted, the Logic App will be blocked by the firewall.
+
 1. Navigate to **Keys** in the left menu under **Settings** and copy:
 
    - **URI**
