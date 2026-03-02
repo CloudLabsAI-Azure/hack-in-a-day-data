@@ -6,7 +6,7 @@ Welcome to Hack in a Day: Knowledge Navigator Agent (Internal Copilot)! We've pr
 
 Once you're ready to dive in, your virtual machine and challenge guide will be right at your fingertips within your web browser.
 
-![](./media/pro-activ-gg-g23.png)
+![](./media/gs1.png)
 
 ### Exploring Your Challenge Resources
 

@@ -6,7 +6,7 @@ Welcome to Hack in a Day: Autonomous IT Troubleshooting Agent challenge! We've p
 
 Once you're ready to dive in, your virtual machine and challenge guide will be right at your fingertips within your web browser.
 
-![](./media/pro-activ-gg-g23.png)
+![](./media/auto-it-gt-gr-g1.png)
 
 ### Exploring Your Challenge Resources
 
