@@ -147,77 +147,7 @@ In this challenge, you will publish your copilot, add it to Teams, test the comp
    Click here to start chatting: [Copilot Link]
    ```
 
-### Step 7: Pin Copilot in Teams (Optional)
-
-1. In **Teams**, right-click on your copilot in the left sidebar.
-
-2. Select **Pin** to keep it easily accessible.
-
-3. You can also add it to a specific team or channel:
-   - Go to a team → Click **+** to add a tab
-   - Search for your copilot
-   - Add it as a tab for easy access
-
-### Step 8: Test from Another User's Perspective (Optional)
-
-If you have access to a test account:
-
-1. Sign in to Teams with a different user account.
-
-2. Search for your IT Support Copilot in Teams Apps.
-
-3. Add it and test:
-   - Trigger a topic (CredentialResetSupport, VPNConnectivitySupport, or HardwareSupportAssistant)
-   - Create a test ticket
-   - Verify it appears in Freshdesk
-
-4. This validates the end-user experience.
-
-### Step 9: Configure Bot Settings (Optional)
-
-1. In **Copilot Studio**, go to **Settings** → **General**.
-
-2. Review and configure:
-   - **Icon:** Upload a custom icon for your copilot
-   - **Color:** Set brand colors
-   - **Description:** Add helpful description for users
-
-3. Update **Conversation Start** topic:
-   - Go to **Topics** → **Conversation Start**
-   - Customize welcome message:
-     ```
-     Welcome to IT Support Copilot!
-
-     I can help you with:
-     - Credential resets and account lockouts
-     - VPN and connectivity issues  
-     - Hardware problems (laptops, printers, monitors, keyboards, etc.)
-
-     Or ask me any IT support question!
-
-     What can I help you with today?
-     ```
-
-4. Save and republish.
-
-### Step 10: Monitor Usage and Performance
-
-1. In **Copilot Studio**, go to **Analytics** in the left navigation.
-
-2. Review metrics:
-   - **Total sessions:** How many conversations
-   - **Engagement rate:** User interaction level
-   - **Resolution rate:** Topics successfully completed
-   - **Escalation rate:** How often tickets are created
-
-3. Identify improvement opportunities:
-   - Topics with low resolution
-   - Common fallback triggers
-   - Frequently asked questions
-
-4. Iterate and improve based on analytics.
-
-### Step 11: Review All Tickets in Freshdesk
+### Step 7: Review All Tickets in Freshdesk
 
 1. Open **Freshdesk portal** in a browser.
 
@@ -249,9 +179,6 @@ If you have access to a test account:
 - Tickets created through Teams appear in Freshdesk with correct subject lines and descriptions
 - Confirmation messages are displayed to users in Teams after ticket creation
 - Knowledge base queries return responses from IT_Support_QA.pdf
-- Copilot availability configured appropriately for organization
-- Share link created and distributed to team
-- Analytics reviewed for usage insights
 - Complete end-to-end solution working from Teams to Freshdesk  
 
 ## Additional Resources
