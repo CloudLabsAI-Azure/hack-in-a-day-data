@@ -108,7 +108,7 @@ Your three-agent pipeline is operational. All the application code has been buil
 
    - **Connection Name**: Enter `SecurityCosmosDB`
    - **Authentication Type**: Select **Access Key**
-   - **Account ID**: Enter your Cosmos DB account name: `security-agent-cosmos-<inject key="DeploymentID" enableCopy="false"/>`
+   - **Account ID**: Enter your Cosmos DB account name: **security-agent-cosmos-<inject key="DeploymentID" enableCopy="false"/>**
    - **Access Key to your Azure Cosmos DB account**: Paste the **PRIMARY KEY** you saved from Challenge 1
    - Click **Create**.
 
