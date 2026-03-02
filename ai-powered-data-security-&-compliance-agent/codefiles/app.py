@@ -373,54 +373,338 @@ def load_from_storage(container: str, blob: str):
 # ---------------------------------------------------------------------------
 # Agent response parsing
 # ---------------------------------------------------------------------------
+def _is_classification_obj(data: dict) -> bool:
+    """Check if a dict looks like a classification output."""
+    # Wrapper with columns list
+    if any(k in data for k in ("columns", "classifications", "sensitivity_map", "classified_columns")):
+        return True
+    # Individual column object
+    if "classification" in data and "column" in data:
+        return True
+    return False
+
+def _is_risk_obj(data: dict) -> bool:
+    """Check if a dict looks like a risk detection output."""
+    if any(k in data for k in ("risks", "risk_summary", "risk_findings", "access_anomalies", "policy_risks")):
+        return True
+    # Individual risk item
+    if "severity" in data and "risk_id" in data:
+        return True
+    return False
+
+def _is_compliance_obj(data: dict) -> bool:
+    """Check if a dict looks like a compliance output."""
+    if any(k in data for k in ("remediation_plan", "compliance_mapping", "compliance_score",
+                                "remediation", "recommendations", "compliance_framework")):
+        return True
+    return False
+
 def parse_agent_response(response_text: str) -> dict:
-    """Parse the combined response from the 3-agent pipeline."""
+    """Parse the combined response from the 3-agent pipeline.
+
+    Handles multiple agent output formats:
+    - JSON inside ```json ... ``` code fences (with or without newlines)
+    - JSON arrays or objects embedded directly in text
+    - Individual JSON objects (one per column/risk) scattered in the response
+    - A single large JSON with all three sections as nested keys
+    """
     result = {
         "classification": None,
         "risks": None,
         "compliance": None,
     }
 
-    json_blocks = re.findall(r'```json\n(.*?)```', response_text, re.DOTALL)
-    for block in json_blocks:
-        try:
-            data = json.loads(block)
-            # Classification output
-            if any(k in data for k in ("columns", "classifications", "sensitivity_map", "classified_columns")):
-                result["classification"] = data
-            # Risk output
-            elif any(k in data for k in ("risks", "risk_summary", "risk_findings")):
-                result["risks"] = data
-            # Compliance output
-            elif any(k in data for k in ("remediation_plan", "compliance_mapping", "compliance_score", "remediation")):
-                result["compliance"] = data
-            # Generic — assign to first empty slot
+    # Collect individual items when agent returns them one-by-one
+    classification_items = []
+    risk_items = []
+
+    def categorize(data):
+        """Categorize a parsed JSON object into the right result bucket."""
+        if isinstance(data, list):
+            # A list of items — check the first item to decide category
+            if data and isinstance(data[0], dict):
+                if _is_classification_obj(data[0]):
+                    result["classification"] = {"columns": data}
+                    return True
+                elif _is_risk_obj(data[0]):
+                    result["risks"] = {"risks": data}
+                    return True
+            return False
+
+        if not isinstance(data, dict):
+            return False
+
+        # Check if the top-level object contains ALL three sections
+        has_cls = any(k in data for k in ("columns", "classifications", "classified_columns", "data_classification"))
+        has_risk = any(k in data for k in ("risks", "risk_summary", "risk_findings", "access_anomalies"))
+        has_comp = any(k in data for k in ("compliance_score", "remediation_plan", "compliance_mapping", "remediation"))
+        if sum([has_cls, has_risk, has_comp]) >= 2:
+            # Combined output — split into sections
+            cls_keys = ("columns", "classifications", "classified_columns", "data_classification")
+            risk_keys = ("risks", "risk_summary", "risk_findings", "access_anomalies", "policy_risks")
+            comp_keys = ("compliance_score", "remediation_plan", "compliance_mapping", "remediation",
+                         "recommendations", "compliance_framework", "approval_queue")
+            cls_data = {k: v for k, v in data.items() if k in cls_keys}
+            risk_data = {k: v for k, v in data.items() if k in risk_keys}
+            comp_data = {k: v for k, v in data.items() if k in comp_keys}
+            other_data = {k: v for k, v in data.items() if k not in cls_keys and k not in risk_keys and k not in comp_keys}
+            if cls_data:
+                result["classification"] = {**cls_data, **{k: v for k, v in other_data.items() if k in ("scan_id", "scan_mode", "timestamp")}}
+            if risk_data:
+                result["risks"] = risk_data
+            if comp_data:
+                result["compliance"] = comp_data
+            return True
+
+        # Single-section objects
+        if _is_classification_obj(data):
+            if "column" in data and "classification" in data:
+                # Individual column classification
+                classification_items.append(data)
             elif result["classification"] is None:
                 result["classification"] = data
+            return True
+        elif _is_risk_obj(data):
+            if "risk_id" in data and "severity" in data and "risks" not in data:
+                risk_items.append(data)
             elif result["risks"] is None:
                 result["risks"] = data
-            elif result["compliance"] is None:
+            return True
+        elif _is_compliance_obj(data):
+            if result["compliance"] is None:
                 result["compliance"] = data
+            return True
+        return False
+
+    # Strategy 1: JSON code fences (flexible: with/without newline, with/without trailing whitespace)
+    json_blocks = re.findall(r'```(?:json)?\s*\n?(.*?)```', response_text, re.DOTALL)
+    for block in json_blocks:
+        block = block.strip()
+        if not block:
+            continue
+        try:
+            data = json.loads(block)
+            categorize(data)
         except json.JSONDecodeError:
             continue
 
-    # Fallback: look for JSON objects without code fences
+    # Strategy 2: Find top-level JSON arrays in text (outside code fences)
     if not any(result.values()):
-        json_objs = re.findall(r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}', response_text)
-        for obj_str in json_objs:
+        array_matches = re.findall(r'(\[[\s\S]*?\])\s*(?:\n|$)', response_text)
+        for arr_str in array_matches:
             try:
-                data = json.loads(obj_str)
-                if len(data) > 1:
-                    if result["classification"] is None:
-                        result["classification"] = data
-                    elif result["risks"] is None:
-                        result["risks"] = data
-                    elif result["compliance"] is None:
-                        result["compliance"] = data
+                data = json.loads(arr_str)
+                categorize(data)
             except json.JSONDecodeError:
                 continue
 
+    # Strategy 3: Find standalone JSON objects (outside code fences)
+    if not all(result.values()):
+        # Remove code-fenced regions first
+        cleaned = re.sub(r'```(?:json)?\s*\n?.*?```', '', response_text, flags=re.DOTALL)
+        # Match objects at any nesting depth
+        brace_depth = 0
+        start = -1
+        for i, ch in enumerate(cleaned):
+            if ch == '{':
+                if brace_depth == 0:
+                    start = i
+                brace_depth += 1
+            elif ch == '}':
+                brace_depth -= 1
+                if brace_depth == 0 and start >= 0:
+                    candidate = cleaned[start:i+1]
+                    try:
+                        data = json.loads(candidate)
+                        categorize(data)
+                    except json.JSONDecodeError:
+                        pass
+                    start = -1
+
+    # Merge individual items collected from scattered objects
+    if classification_items and result["classification"] is None:
+        result["classification"] = {"columns": classification_items}
+    elif classification_items and result["classification"] is not None:
+        existing = result["classification"]
+        if "columns" not in existing and "classifications" not in existing:
+            existing["columns"] = classification_items
+
+    if risk_items and result["risks"] is None:
+        result["risks"] = {"risks": risk_items}
+    elif risk_items and result["risks"] is not None:
+        existing = result["risks"]
+        if "risks" not in existing and "risk_findings" not in existing:
+            existing["risks"] = risk_items
+
+    # Final fallback: parse text/markdown sections when no JSON was found for risks/compliance
+    if result["risks"] is None:
+        result["risks"] = _parse_risks_from_text(response_text)
+    if result["compliance"] is None:
+        result["compliance"] = _parse_compliance_from_text(response_text)
+
     return result
+
+
+def _parse_risks_from_text(text: str) -> dict | None:
+    """Extract risk information from markdown/text when no JSON block is available."""
+    # Look for risk-related sections in the text
+    risk_section = None
+    patterns = [
+        r'(?:###?\s*\d*\.?\s*Risk\s+Detection[^\n]*\n)(.*?)(?=###|---\s*\n###|$)',
+        r'(?:Risk\s+Detection\s+Summary[^\n]*\n)(.*?)(?=###|---\s*\n###|$)',
+        r'(?:Detected\s+Risks[^\n]*\n)(.*?)(?=###|---\s*\n###|$)',
+    ]
+    for pat in patterns:
+        m = re.search(pat, text, re.DOTALL | re.IGNORECASE)
+        if m:
+            risk_section = m.group(1)
+            break
+
+    if not risk_section:
+        return None
+
+    # Extract risk summary counts
+    summary = {"critical": 0, "high": 0, "medium": 0, "low": 0}
+    count_match = re.search(r'(\d+)\s*critical', risk_section, re.IGNORECASE)
+    if count_match:
+        summary["critical"] = int(count_match.group(1))
+    count_match = re.search(r'(\d+)\s*high', risk_section, re.IGNORECASE)
+    if count_match:
+        summary["high"] = int(count_match.group(1))
+    count_match = re.search(r'(\d+)\s*medium', risk_section, re.IGNORECASE)
+    if count_match:
+        summary["medium"] = int(count_match.group(1))
+    count_match = re.search(r'(\d+)\s*low', risk_section, re.IGNORECASE)
+    if count_match:
+        summary["low"] = int(count_match.group(1))
+
+    # Extract individual risk items from bullet points
+    risks = []
+    bullets = re.findall(r'[-*]\s+(.+)', risk_section)
+    for idx, bullet in enumerate(bullets):
+        # Determine severity from text
+        sev = "MEDIUM"
+        bullet_lower = bullet.lower()
+        if "critical" in bullet_lower:
+            sev = "CRITICAL"
+        elif "high" in bullet_lower:
+            sev = "HIGH"
+        elif "low" in bullet_lower:
+            sev = "LOW"
+
+        # Determine category
+        category = "General"
+        if any(w in bullet_lower for w in ("access", "permission", "role", "privilege")):
+            category = "Access Control"
+        elif any(w in bullet_lower for w in ("encrypt", "mask", "plaintext")):
+            category = "Data Protection"
+        elif any(w in bullet_lower for w in ("anomal", "after-hours", "bulk", "unusual", "foreign")):
+            category = "Anomalous Activity"
+        elif any(w in bullet_lower for w in ("compliance", "audit", "breach", "notification")):
+            category = "Compliance Gap"
+
+        risks.append({
+            "risk_id": f"RISK-{idx+1:03d}",
+            "severity": sev,
+            "category": category,
+            "description": bullet.strip(),
+            "affected_resource": "",
+            "recommended_action": "Review and remediate",
+            "requires_human_approval": sev in ("CRITICAL", "HIGH")
+        })
+
+    if not risks and not any(summary.values()):
+        return None
+
+    return {"risk_summary": summary, "risks": risks}
+
+
+def _parse_compliance_from_text(text: str) -> dict | None:
+    """Extract compliance/remediation info from markdown/text when no JSON is available."""
+    comp_section = None
+    patterns = [
+        r'(?:###?\s*\d*\.?\s*Compliance\s+Mapping[^\n]*\n)(.*?)(?=###?\s*\d*\.?\s*(?:Recommended|$))',
+        r'(?:###?\s*\d*\.?\s*Remediation[^\n]*\n)(.*?)(?=###?\s*\d*\.?|$)',
+        r'(?:###?\s*\d*\.?\s*Compliance[^\n]*\n)(.*?)(?=###?\s*\d*\.?|$)',
+    ]
+    for pat in patterns:
+        m = re.search(pat, text, re.DOTALL | re.IGNORECASE)
+        if m:
+            comp_section = m.group(1)
+            break
+
+    if not comp_section:
+        # Try to grab everything from "Regulatory Violations" or "Remediation" onwards
+        m = re.search(r'((?:Regulatory|Remediation|Compliance)[^\n]*\n.*)', text, re.DOTALL | re.IGNORECASE)
+        if m:
+            comp_section = m.group(1)
+
+    if not comp_section:
+        return None
+
+    # Extract compliance score if mentioned
+    score = 0
+    score_match = re.search(r'compliance\s+score[:\s]*(\d+)', comp_section, re.IGNORECASE)
+    if score_match:
+        score = int(score_match.group(1))
+
+    # Extract remediation items from markdown table rows
+    remediation = []
+    # Match table rows: | REM-001 | Action | Priority | Assigned | Regulation |
+    table_rows = re.findall(r'\|\s*(REM-\d+|\d+)\s*\|\s*([^|]+)\|\s*([^|]+)\|\s*([^|]+)\|\s*([^|]+?)\s*\|', comp_section)
+    for row in table_rows:
+        step_id, action, priority, assigned, regulation = [x.strip() for x in row]
+        remediation.append({
+            "action": action,
+            "priority": priority,
+            "assigned_to": assigned,
+            "regulation": [r.strip() for r in regulation.split(",")] if "," in regulation else [regulation],
+            "description": action,
+            "requires_human_approval": priority.lower() in ("immediate", "short-term")
+        })
+
+    # Also try bullet-point remediation items
+    if not remediation:
+        bullets = re.findall(r'[-*]\s+(?:\*\*)?([^*\n]+?)(?:\*\*)?\s*(?::|—|-)\s*(.+)', comp_section)
+        for idx, (action, desc) in enumerate(bullets):
+            remediation.append({
+                "action": action.strip(),
+                "priority": "Medium",
+                "assigned_to": "Security Team",
+                "regulation": [],
+                "description": desc.strip(),
+                "requires_human_approval": True
+            })
+
+    # Extract compliance mapping
+    mapping = []
+    reg_patterns = [
+        ("GDPR", r'GDPR[^.\n]*[.\n]'),
+        ("HIPAA", r'HIPAA[^.\n]*[.\n]'),
+        ("PCI-DSS", r'PCI-?DSS[^.\n]*[.\n]'),
+    ]
+    for reg_name, pat in reg_patterns:
+        matches = re.findall(pat, comp_section, re.IGNORECASE)
+        for match_text in matches[:1]:  # Take first mention
+            mapping.append({
+                "regulation": reg_name,
+                "description": match_text.strip().rstrip("."),
+                "status": "Non-Compliant"
+            })
+
+    if not remediation and not mapping and score == 0:
+        return None
+
+    # Estimate a compliance score based on the number of issues if not explicitly given
+    if score == 0 and (remediation or mapping):
+        total_issues = len(remediation) + len(mapping)
+        score = max(10, 100 - (total_issues * 8))  # rough estimate
+
+    return {
+        "compliance_score": score,
+        "remediation_plan": remediation,
+        "compliance_mapping": mapping
+    }
 
 # ---------------------------------------------------------------------------
 # Agent API call
@@ -523,7 +807,64 @@ def build_scan_prompt(datasets: list, access_policies, access_logs, scan_mode: s
         elif isinstance(access_logs, list):
             parts.append(f"\n--- ACCESS LOGS ({len(access_logs)} entries) ---\n```\n{json.dumps(access_logs[:50], indent=2)}\n```")
 
-    parts.append("\nPerform a comprehensive security analysis following your instructions.")
+    parts.append("""
+
+IMPORTANT: Return your complete analysis as THREE separate JSON code blocks (wrapped in ```json ... ```), one for each section:
+
+SECTION 1 — DATA CLASSIFICATION (```json block 1):
+{
+  "columns": [
+    {
+      "column": "ColumnName",
+      "table": "TableName",
+      "data_type": "VARCHAR(100)",
+      "classification": "PII",
+      "confidence": 0.95,
+      "reason": "Contains personal names",
+      "regulations": ["GDPR", "HIPAA"],
+      "recommended_controls": ["encryption", "masking"]
+    }
+  ]
+}
+
+SECTION 2 — RISK DETECTION (```json block 2):
+{
+  "risk_summary": {"critical": 0, "high": 0, "medium": 0, "low": 0},
+  "risks": [
+    {
+      "risk_id": "RISK-001",
+      "severity": "CRITICAL",
+      "category": "Access Control",
+      "description": "Description of the risk",
+      "affected_resource": "ResourceName",
+      "user": "username",
+      "role": "RoleName",
+      "recommended_action": "What to do",
+      "requires_human_approval": true
+    }
+  ]
+}
+
+SECTION 3 — COMPLIANCE & REMEDIATION (```json block 3):
+{
+  "compliance_score": 45,
+  "compliance_mapping": [
+    {"regulation": "GDPR", "article": "Article 32", "status": "Non-Compliant", "description": "..."}
+  ],
+  "remediation_plan": [
+    {
+      "action": "Encrypt PII columns",
+      "priority": "Immediate",
+      "assigned_to": "DBA",
+      "regulation": ["GDPR"],
+      "description": "Apply AES-256 encryption",
+      "requires_human_approval": true
+    }
+  ]
+}
+
+Do NOT use markdown tables or bullet points for the main output. Use ONLY the three JSON code blocks above. You may add brief text explanations between the blocks.
+""")
 
     return "\n".join(parts)
 
@@ -712,12 +1053,32 @@ with tab_scan:
                 st.session_state["last_scan_raw"] = response_text
 
                 # Completion banner
+                cls_ok = "Yes" if parsed["classification"] else "No"
+                rsk_ok = "Yes" if parsed["risks"] else "No"
+                cmp_ok = "Yes" if parsed["compliance"] else "No"
                 st.markdown(f"""
                 <div class="completion-banner">
                     <h3>Scan Complete</h3>
                     <p>{len(selected_files)} datasets analyzed &nbsp;|&nbsp; {pub_count} alerts published to Event Grid &nbsp;|&nbsp; {'Saved to Cosmos DB' if cosmos_id else 'Cosmos DB not connected'}</p>
+                    <p style="font-size:0.85rem;margin-top:4px;">Classification: {cls_ok} &nbsp;|&nbsp; Risks: {rsk_ok} &nbsp;|&nbsp; Compliance: {cmp_ok}</p>
                 </div>
                 """, unsafe_allow_html=True)
+
+                with st.expander("Debug: Raw Agent Response"):
+                    st.text(response_text[:5000] if len(response_text) > 5000 else response_text)
+                with st.expander("Debug: Parsed Sections"):
+                    st.json({"classification_found": parsed["classification"] is not None,
+                             "risks_found": parsed["risks"] is not None,
+                             "compliance_found": parsed["compliance"] is not None})
+                    if parsed["classification"]:
+                        st.markdown("**Classification keys:**")
+                        st.json(list(parsed["classification"].keys()) if isinstance(parsed["classification"], dict) else "list")
+                    if parsed["risks"]:
+                        st.markdown("**Risks keys:**")
+                        st.json(list(parsed["risks"].keys()) if isinstance(parsed["risks"], dict) else "list")
+                    if parsed["compliance"]:
+                        st.markdown("**Compliance keys:**")
+                        st.json(list(parsed["compliance"].keys()) if isinstance(parsed["compliance"], dict) else "list")
 
     st.markdown("</div>", unsafe_allow_html=True)
 
