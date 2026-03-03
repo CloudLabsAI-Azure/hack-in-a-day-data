@@ -155,4 +155,4 @@ This ensures the Copilot behaves like a real HR assistant rather than a generic 
 - Generative answers DO NOT rely on open-world/general AI knowledge.
 
 ---
-Click Next to continue to Challenge 04: Build the Live Interview Support Mode.
+Click **Next** to continue to **Challenge 04: Build the Live Interview Support Mode**.
