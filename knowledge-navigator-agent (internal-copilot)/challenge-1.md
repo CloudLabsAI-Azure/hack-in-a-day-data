@@ -66,27 +66,6 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ### Step 2: Create a New Agent
 
-1. Open **Microsoft Edge** browser in your lab VM.
-
-1. If not already open, navigate to **Microsoft Copilot Studio** by entering the following URL in the browser:
-
-   ```
-   https://copilotstudio.microsoft.com
-   ```
-
-1. Click **Sign in**.
-
-1. Enter the provided credentials:
-
-   - **Email/Username: <inject key="AzureAdUserEmail"></inject>**
-   - **Password: <inject key="AzureAdUserPassword"></inject>**
-
-1. If prompted with **"Stay signed in?"**, click **No**.
-
-1. Wait for the Copilot Studio home page to load.
-
-1. Ensure the environment is **ODL_User<inject key="DeploymentID"></inject>**.
-
 1. In Copilot Studio, select **Agents** from the left navigation pane, and then click **Create blank agent** to start creating a new agent.
 
 1. On the overview pane of the agent, click on **edit** inside the Details card to edit the agent's name and description.
@@ -117,23 +96,7 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 1. Click on **Save**.
 
-### Step 3: Customize Agent Icon and Identity
-
-- Once the agent is created, you'll see the authoring canvas.
-
-- Click on **Settings** (gear icon) in the top-right corner.
-
-- Navigate to **Details** section.
-
-- Under **Icon** or **Avatar**, select an appropriate icon for internal knowledge (e.g., book, search, or information icon).
-
-- Optionally, customize the following:
-   - **Welcome message:** "Hello! I'm your Internal Knowledge Navigator. I can help you find information about HR policies, Finance procedures, IT support, and Procurement processes. What would you like to know?"
-   - **Color theme:** Choose a professional color that matches your organization
-
-- Click **Save** to apply changes.
-
-### Step 4: Test Basic Agent Greeting
+### Step 3: Test Basic Agent Greeting
 
 - Click the **Test** button to open the test panel on the right side.
 
@@ -147,7 +110,7 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 - Note that specific knowledge questions won't work yet. You'll add knowledge sources in the next challenge.
 
-### Step 5: Save Your Progress
+### Step 4: Save Your Progress
 
 - Ensure all settings are saved.
 
@@ -164,9 +127,7 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ## Success Criteria
 - Created a new agent named **Internal Knowledge Navigator**
-- Configured agent with appropriate description and icon
-- Verified basic greeting functionality
-- Ready to proceed with knowledge base upload
+- Configured agent
 
 ## Additional Resources
 - [Microsoft Copilot Studio Overview](https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-what-is-copilot-studio)  
