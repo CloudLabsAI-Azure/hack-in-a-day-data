@@ -39,25 +39,25 @@ In this challenge, you will create 4 topics that help employees: Document Search
       Assist new employees who are learning about the company. Help them understand company policies, procedures, organizational structure, benefits, workplace resources, and onboarding requirements. Use generative answers to search the SharePoint knowledge base for information from documents like the HR Handbook, Onboarding Checklist, IT Governance Policy, Employee Travel Reimbursement guidelines, and other relevant company documents. Provide comprehensive, helpful responses to help new employees get oriented and feel welcomed.
       ```
 
-- Click **Create**.
+1. Click **Create**.
 
-- Review the generated topic:
+1. Review the generated topic:
 
-- **Trigger phrases:** Verify it includes phrases like:
+   - **Trigger phrases:** Verify it includes phrases like:
    - "I'm a new employee"
    - "New hire help"
    - "Onboarding information"
    - "First day at Contoso"
    - "What should I know as a new employee"
 
-- Review the conversation flow to ensure it uses generative answers.
+1. Review the conversation flow to ensure it uses generative answers.
 
-- **Important:** If you see an error about limited scope or variables:
+1. **Important:** If you see an error about limited scope or variables:
    - Open the **Variables** pane.
    - Click on each variable under **Topic**.
    - Enable the both the checkbox for **Receive values from other topics** or **Return values to original topics** for Variables which shows error.
 
-- Click **Save**.
+1. Click **Save**.
 
 ### Step 3: Create Topic 2 - Email Document
 
@@ -75,24 +75,24 @@ In this challenge, you will create 4 topics that help employees: Document Search
       Help employees who want to receive a company document via email. Ask which document they need and save it as a variable. Ask for their email address and save it as a variable. Ask them to briefly describe the document or why they need it and save that as a variable. Then call the Email Document to Employee agent flow and map the email address to EmployeeEmail input, document name to DocumentName input, and description to DocumentDescription input. After the flow completes, confirm that an email with the document information has been sent to their inbox.
       ```
 
-- Click **Create**.
+1. Click **Create**.
 
-- Review the generated topic:
+1. Review the generated topic:
 
-- **Trigger phrases:** Verify it includes phrases like:
+   - **Trigger phrases:** Verify it includes phrases like:
    - "Email me a document"
    - "Send document to my email"
    - "I need a document emailed"
    - "Can you email the policy"
 
-- Review the conversation flow to ensure it collects all required information.
+1. Review the conversation flow to ensure it collects all required information.
 
-- **Important:** If you see an error about limited scope or variables:
+1. **Important:** If you see an error about limited scope or variables:
    - Open the **Variables** pane.
    - Click on each variable under **Topic**.
    - Enable the both the checkbox for **Receive values from other topics** or **Return values to original topics** for Variables which shows error.
 
-- Click **Save**.
+1. Click **Save**.
 
 #### Connect EmailDocument Topic to Flow:
 
@@ -135,23 +135,23 @@ In this challenge, you will create 4 topics that help employees: Document Search
       Help employees submit requests or questions to the team via Microsoft Teams. Ask for their name and save it as a variable. Ask for their email address and save it as a variable. Ask what type of request this is using multiple choice options (IT support, HR question, Facility issue, Access request, Other) and save the selection as a variable. After capturing the selection, create a new text variable called RequestTypeText and set it to the value of the multiple choice selection to convert it to string format. Ask them to describe their request in detail and save the request details as a variable. Then call the Send Request to Teams agent flow and map the employee name to EmployeeName input, email to EmployeeEmail input, the RequestTypeText variable to RequestType input, and request details to RequestDetails input. After the flow completes, confirm that their request has been posted to the team channel in Microsoft Teams and someone will respond soon.
       ```
 
-- Click **Create**.
+1. Click **Create**.
 
-- Review the generated topic:
+1. Review the generated topic:
 
-- **Trigger phrases:** Verify it includes phrases like:
+   - **Trigger phrases:** Verify it includes phrases like:
    - "Submit a request"
    - "Send request to team"
    - "I need help from the team"
    - "Post my question to Teams"
 
-- Review the conversation flow to ensure it collects all necessary details.
+1. Review the conversation flow to ensure it collects all necessary details.
 
-- **Important:** If you see an error such as **PowerFxError** or a limited scope issue:
+1. **Important:** If you see an error such as **PowerFxError** or a limited scope issue:
    - Click the ellipsis (**...**) on the affected node.
    - Select **Delete**.
 
-- Click **Save**.
+1. Click **Save**.
 
 #### Connect SubmitRequest Topic to Flow:
 
@@ -220,72 +220,72 @@ Click the **Test** button to open the test panel on the right side.
 
 #### Test DocumentSearch:
 
-- Type: `Where can I find information about employee benefits?`
+1. Type: `Where can I find information about employee benefits?`
 
-- Verify the agent searches the SharePoint knowledge base and provides relevant information from company documents.
+1. Verify the agent searches the SharePoint knowledge base and provides relevant information from company documents.
 
-- Try another query: `What are the expense reimbursement policies?`
+1. Try another query: `What are the expense reimbursement policies?`
 
-- Verify generative answers are provided from the knowledge base without calling any flows.
+1. Verify generative answers are provided from the knowledge base without calling any flows.
 
 #### Test EmailDocument:
 
-- Reset the conversation (click the refresh icon).
+1. Reset the conversation (click the refresh icon).
 
-- Type: `Email me a document`
+1. Type: `Email me a document`
 
-- Provide the document name when asked (e.g., "HR Handbook").
+1. Provide the document name when asked (e.g., "HR Handbook").
 
-- Provide your email address.
+1. Provide your email address.
 
-- Provide a brief description (e.g., "Need to review HR policies").
+1. Provide a brief description (e.g., "Need to review HR policies").
 
-- Verify the flow runs and you receive the confirmation message.
+1. Verify the flow runs and you receive the confirmation message.
 
-- Check your email inbox (**<inject key="AzureAdUserEmail"></inject>**) to see if the email was delivered with document information.
+1. Check your email inbox (**<inject key="AzureAdUserEmail"></inject>**) to see if the email was delivered with document information.
 
 #### Test SubmitRequest:
 
-- Reset the conversation.
+1. Reset the conversation.
 
-- Type: `Submit a request to the team`
+1. Type: `Submit a request to the team`
 
-- Provide your name when asked.
+1. Provide your name when asked.
 
-- Provide your email address.
+1. Provide your email address.
 
-- Provide a request type (e.g., "IT support" or "HR question").
+1. Provide a request type (e.g., "IT support" or "HR question").
 
-- Describe your request in detail.
+1. Describe your request in detail.
 
-- Verify the flow runs and you receive the confirmation message.
+1. Verify the flow runs and you receive the confirmation message.
 
-- Check your Microsoft Teams to see if the request was posted to the team channel.
+1. Check your Microsoft Teams to see if the request was posted to the team channel.
 
 #### Test NewEmployeeOnboarding:
 
-- Reset the conversation.
+1. Reset the conversation.
 
-- Type: `I'm a new employee and need help getting started`
+1. Type: `I'm a new employee and need help getting started`
 
-- Ask questions like:
+1. Ask questions like:
   - "What benefits do I get?"
   - "What's the onboarding process?"
   - "Where can I find IT policies?"
 
-- Verify the agent provides helpful answers from the knowledge base (HR Handbook, Onboarding Checklist, IT Governance Policy, etc.).
+1. Verify the agent provides helpful answers from the knowledge base (HR Handbook, Onboarding Checklist, IT Governance Policy, etc.).
 
 ### Step 9: Verify Flow Execution
 
-- Go back to **Flows** in the left navigation.
+1. Go back to **Flows** in the left navigation.
 
-- Click on each flow (**Email Document to Employee** and **Send Request to Teams**) to view run history.
+1. Click on each flow (**Email Document to Employee** and **Send Request to Teams**) to view run history.
 
-- Verify that the flows were triggered by your topic tests.
+1. Verify that the flows were triggered by your topic tests.
 
-- Check that the inputs were passed correctly from the topics.
+1. Check that the inputs were passed correctly from the topics.
 
-- Ensure all steps in the flows completed successfully.
+1. Ensure all steps in the flows completed successfully.
 
 ## Success Criteria
 - Created topics using generative AI:
