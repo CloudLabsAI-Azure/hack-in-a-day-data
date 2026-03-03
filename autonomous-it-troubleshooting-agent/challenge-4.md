@@ -155,6 +155,7 @@ Now connect each topic to your published **Freshdesk** flow. The AI-generated to
 1. Navigate through the topic flow and find the appropriate place where escalation to ticket creation should happen.
 
 1. Add the **Freshdesk** tool immediately after the message where you inform the user that a support ticket will be created:
+
    - Click the **+** icon.
    - Select **Add a tool**.
    - Select **Freshdesk**.
