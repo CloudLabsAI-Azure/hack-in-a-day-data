@@ -23,46 +23,46 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ### Step 1: Create SharePoint Site
 
-- Navigate to the **Microsoft 365** portal:
+1. Navigate to the **Microsoft 365** portal:
 
    ```
    https://www.office.com
    ```
 
-- Sign in with the provided credentials:
+1. Sign in with the provided credentials:
    - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
    - **Password:** <inject key="AzureAdUserPassword"></inject>
 
-- If prompted with **"Stay signed in?"**, click **No**.
+1. If prompted with **"Stay signed in?"**, click **No**.
 
-- From the Microsoft 365 apps, select **SharePoint**.
+1. From the Microsoft 365 apps, select **SharePoint**.
 
-- Click on **+ Create site** and select **Team site**.
+1. Click on **+ Create site** and select **Team site**.
 
-- Configure the new site:
+1. Configure the new site:
    - **Site name:** **contoso-documents-<inject key="DeploymentID"></inject>**
    - **Site description:** "Internal knowledge base for company policies and procedures"
    - **Privacy settings:** Set to **Public** (anyone in the organization can access)
 
-- Click **Next** and add any additional owners if needed, then click **Finish**.
+1. Click **Next** and add any additional owners if needed, then click **Finish**.
 
-- Once the site is created, navigate to the **Documents** section.
+1. Once the site is created, navigate to the **Documents** section.
 
-- You can upload files now or in Challenge 2. To upload now, click **Upload** > **Files** and select all documents from where you have extracted the datasets.
+1. You can upload files now or in Challenge 2. To upload now, click **Upload** > **Files** and select all documents from where you have extracted the datasets.
 
-- Wait for all files to upload successfully (this may take several minutes for 40+ documents).
+1. Wait for all files to upload successfully (this may take several minutes for 40+ documents).
 
-- **Copy the SharePoint site URL** from the browser address bar and paste it into **Notepad** for use in upcoming steps.
+1. **Copy the SharePoint site URL** from the browser address bar and paste it into **Notepad** for use in upcoming steps.
 
    Example format: **https://yourdomain.sharepoint.com/sites/contoso-documents-<inject key="DeploymentID"></inject>**
 
-- Navigate to **Microsoft Copilot Studio**:
+1. Navigate to **Microsoft Copilot Studio**:
 
    ```
    https://copilotstudio.microsoft.com
    ```
 
-- Ensure the environment is **ODL_User<inject key="DeploymentID"></inject>**.
+1. Ensure the environment is **ODL_User<inject key="DeploymentID"></inject>**.
 
 ### Step 2: Create a New Agent
 
@@ -98,17 +98,17 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ### Step 3: Test Basic Agent Greeting
 
-- Click the **Test** button to open the test panel on the right side.
+1. Click the **Test** button to open the test panel on the right side.
 
-- In the test pane, the agent should greet you with the welcome message.
+1. In the test pane, the agent should greet you with the welcome message.
 
-- Try typing a simple question like:
+1. Try typing a simple question like:
    - "Hello"
    - "What can you help me with?"
 
-- Verify that the agent responds appropriately with the greeting.
+1. Verify that the agent responds appropriately with the greeting.
 
-- Note that specific knowledge questions won't work yet. You'll add knowledge sources in the next challenge.
+1. Note that specific knowledge questions won't work yet. You'll add knowledge sources in the next challenge.
 
 <validation step="1b18cb99-3de1-4ea8-8c3f-1839a06f8bf4" />
  

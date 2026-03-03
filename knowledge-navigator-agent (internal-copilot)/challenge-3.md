@@ -55,7 +55,7 @@ These flows will be created first so they're ready to use when you build convers
 
 1. If prompted to sign in, use your credentials: **<inject key="AzureAdUserEmail"></inject>**
 
-- Configure the email action:
+1. Configure the email action:
 
    - **To:** Enter **<inject key="AzureAdUserEmail"></inject>**
    
@@ -131,7 +131,7 @@ These flows will be created first so they're ready to use when you build convers
 
 1. If prompted to sign in, use your credentials: **<inject key="AzureAdUserEmail"></inject>**
 
-- Configure the Teams action:
+1. Configure the Teams action:
 
    - **Post as:** Flow bot
    
