@@ -1,6 +1,6 @@
 # Build a Proactive Customer Care Agent in a Day
 
-Welcome to the Proactive Customer Care Agent Hack in a Day! Today, you'll explore the power of AI-driven customer service by building an intelligent agent that handles customer inquiries, complaints, and service requests automatically. Through this hands-on experience, you'll learn how to design a conversational AI system using Microsoft Copilot Studio that integrates with Freshdesk for automated ticket creation.
+Welcome to the Proactive Customer Care Agent Hack in a Day! Today, you'll explore the power of AI-driven customer service by building an intelligent agent that handles customer inquiries and service requests automatically. Through this hands-on experience, you'll learn how to design a conversational AI system using Microsoft Copilot Studio that integrates with Freshdesk for automated ticket creation.
 
 ## Scenario
 
@@ -55,8 +55,8 @@ The CloudLabs support team is available 24/7, 365 days a year, via email and liv
 
 Learner Support Contacts:
 
-- Email Support: cloudlabs-support@spektrasystems.com
-- Live Chat Support: https://cloudlabs.ai/labs-support
+- Email: [cloudlabs-support@spektrasystems.com](mailto:cloudlabs-support@spektrasystems.com)
+- Live Chat: [https://cloudlabs.ai/labs-support](https://cloudlabs.ai/labs-support)
 
 Click **Next** at the bottom of the page to proceed to the next page.
 
