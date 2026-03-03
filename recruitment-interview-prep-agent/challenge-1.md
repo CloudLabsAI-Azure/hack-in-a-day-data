@@ -14,6 +14,7 @@ Please download and extract the datasets required for this challenge here:
 ```
 https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/hr-datasets.zip
 ```
+> Note: Use Lab-provided datasets (do not use real resumes).
 
 ## Challenge Objectives
 - Create a new Copilot in Copilot Studio.
@@ -64,3 +65,4 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 - [Create your first Copilot](https://learn.microsoft.com/microsoft-copilot-studio/authoring-create-copilot)
 
 Click **Next** to continue to **Challenge 02: Upload Job Descriptions and Resume Knowledge Documents**.
+
