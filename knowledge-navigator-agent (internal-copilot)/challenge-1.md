@@ -110,14 +110,6 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 - Note that specific knowledge questions won't work yet. You'll add knowledge sources in the next challenge.
 
-### Step 4: Save Your Progress
-
-- Ensure all settings are saved.
-
-- Keep the Copilot Studio browser tab open for the next challenge.
-
-- Take note of your copilot name: **Internal Knowledge Navigator**
-
 <validation step="1b18cb99-3de1-4ea8-8c3f-1839a06f8bf4" />
  
 > **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
