@@ -26,12 +26,12 @@ In this challenge, you will create 3 essential IT support topics using generativ
 
 1. In the topic creation dialog, enter the following details:
 
-    - **Name:** `CredentialResetSupport`
-    - **Description:**
+   - **Name:** `CredentialResetSupport`
+   - **Description:**
 
-    ```
-    Help users who need password reset assistance when they forget their password or their account becomes locked. Ask the user for their username and save it as a variable. Use generative answers to provide self-service reset instructions by referring to the uploaded knowledge sources whenever possible. After sharing the steps, ask the user whether they were able to reset their password successfully. If not, offer to create a support ticket. When creating the ticket, generate a subject line such as "Password Reset Assistance – <username>" and create a detailed description that includes the username and the reason they were unable to reset the password. Map these values to the Freshdesk Power Automate flow inputs for Subject and Description so the flow receives the correct variables. This topic should act as a guided password-reset helper that uses the knowledge base first, and escalates to ticket creation only when needed.
-    ```
+      ```
+      Help users who need password reset assistance when they forget their password or their account becomes locked. Ask the user for their username and save it as a variable. Use generative answers to provide self-service reset instructions by referring to the uploaded knowledge sources whenever possible. After sharing the steps, ask the user whether they were able to reset their password successfully. If not, offer to create a support ticket. When creating the ticket, generate a subject line such as "Password Reset Assistance – <username>" and create a detailed description that includes the username and the reason they were unable to reset the password. Map these values to the Freshdesk Power Automate flow inputs for Subject and Description so the flow receives the correct variables. This topic should act as a guided password-reset helper that uses the knowledge base first, and escalates to ticket creation only when needed.
+      ```
 
 1. Click on **Create**.
 
@@ -70,12 +70,12 @@ In this challenge, you will create 3 essential IT support topics using generativ
 
 1. Enter the following details:
 
-    - **Name:** `VPNConnectivitySupport`
-    - **Description:**
+   - **Name:** `VPNConnectivitySupport`
+   - **Description:**
 
-        ```
-        Assist users experiencing VPN or general internet connectivity issues. Ask the user what exact problem or error message they are seeing and save that response as a variable. Ask where the user is working from, such as home, office, or another location, and save that as another variable. Provide basic troubleshooting steps including checking internet connection, verifying Wi-Fi status, restarting the VPN client, checking login credentials, reconnecting to the network, and any other basic connectivity checks. After giving these steps, ask the user whether the issue is resolved. If the user says no, offer to create a support ticket. When creating the ticket, generate a subject line using the location variable, for example "Connectivity Issue – <location>," and generate a detailed description that includes the user's reported error message and the location information. Map these values to the Freshdesk Power Automate flow inputs for Subject and Description so the flow receives the correct variables. This topic should handle all VPN and internet issues but exclude hardware problems, as those are handled in another topic.
-        ```
+      ```
+      Assist users experiencing VPN or general internet connectivity issues. Ask the user what exact problem or error message they are seeing and save that response as a variable. Ask where the user is working from, such as home, office, or another location, and save that as another variable. Provide basic troubleshooting steps including checking internet connection, verifying Wi-Fi status, restarting the VPN client, checking login credentials, reconnecting to the network, and any other basic connectivity checks. After giving these steps, ask the user whether the issue is resolved. If the user says no, offer to create a support ticket. When creating the ticket, generate a subject line using the location variable, for example "Connectivity Issue – <location>," and generate a detailed description that includes the user's reported error message and the location information. Map these values to the Freshdesk Power Automate flow inputs for Subject and Description so the flow receives the correct variables. This topic should handle all VPN and internet issues but exclude hardware problems, as those are handled in another topic.
+      ```
 
 1. Click **Create** or **Generate**.
 
@@ -106,12 +106,12 @@ In this challenge, you will create 3 essential IT support topics using generativ
 
 1. Enter the following details:
 
-    - **Name:** `HardwareSupportAssistant`
-    - **Description:**
+   - **Name:** `HardwareSupportAssistant`
+   - **Description:**
 
-        ```
-        Create a hardware support topic that handles all common device issues, including laptops, mice, keyboards, monitors, printers, headphones, docking stations, network adapters, and any other device. Begin by asking the user which device they are having trouble with and save this selection as a variable, then ask them to describe the issue in their own words and save that as another variable. Provide troubleshooting steps based on the selected device: for laptops, include steps for slow performance, freezing, overheating, slow boot, high CPU or memory usage, updates, restart, disk cleanup, and malware checks; for printers, include steps for offline issues, paper jams, blank pages, print queue problems, restarting the spooler, reconnecting cables, reloading paper, and power cycling; for mice and keyboards, include USB or Bluetooth checks, battery checks, driver checks, cleaning stuck keys, and re-pairing; for monitors, include steps for no display, flickering, resolution problems, cable or port checks, brightness and power checks; for headphones and microphones, include audio settings, mic testing, Bluetooth reconnecting, resetting, and driver updates; and for docking stations or network adapters, include cable checks, restarting the dock, firmware checks, and adapter resets. For any "other device," provide general troubleshooting such as checking cables, restarting the device, and verifying drivers. After the troubleshooting steps, ask the user whether the issue is resolved. If not, offer to create a support ticket. When creating the ticket, generate a subject like "Hardware Issue – <device>" and a description that includes the user's reported issue details and device type, and map these values to the Freshdesk Power Automate flow as the Subject and Description inputs.
-        ```
+      ```
+      Create a hardware support topic that handles all common device issues, including laptops, mice, keyboards, monitors, printers, headphones, docking stations, network adapters, and any other device. Begin by asking the user which device they are having trouble with and save this selection as a variable, then ask them to describe the issue in their own words and save that as another variable. Provide troubleshooting steps based on the selected device: for laptops, include steps for slow performance, freezing, overheating, slow boot, high CPU or memory usage, updates, restart, disk cleanup, and malware checks; for printers, include steps for offline issues, paper jams, blank pages, print queue problems, restarting the spooler, reconnecting cables, reloading paper, and power cycling; for mice and keyboards, include USB or Bluetooth checks, battery checks, driver checks, cleaning stuck keys, and re-pairing; for monitors, include steps for no display, flickering, resolution problems, cable or port checks, brightness and power checks; for headphones and microphones, include audio settings, mic testing, Bluetooth reconnecting, resetting, and driver updates; and for docking stations or network adapters, include cable checks, restarting the dock, firmware checks, and adapter resets. For any "other device," provide general troubleshooting such as checking cables, restarting the device, and verifying drivers. After the troubleshooting steps, ask the user whether the issue is resolved. If not, offer to create a support ticket. When creating the ticket, generate a subject like "Hardware Issue – <device>" and a description that includes the user's reported issue details and device type, and map these values to the Freshdesk Power Automate flow as the Subject and Description inputs.
+      ```
 
 1. Click **Create** or **Generate**.
 
@@ -164,7 +164,7 @@ Now connect each topic to your published **Freshdesk** flow. The AI-generated to
    - For **Subject**, select the appropriate topic variable such as **Username**.
    - For **Description**, select the relevant topic variable such as **ResetIssue**.
 
-   > **Note:** If your topic doesn't have all the required variables, add **Question** nodes to collect missing information before calling the flow.
+      > **Note:** If your topic doesn't have all the required variables, add **Question** nodes to collect missing information before calling the flow.
 
 1. Add a confirmation message after the flow action and click **Save**.
 
@@ -185,7 +185,7 @@ Now connect each topic to your published **Freshdesk** flow. The AI-generated to
    - For **Subject**, select the appropriate topic variable such as **Location**.
    - For **Description**, select the relevant topic variable such as **ErrorMessage**.
 
-   > **Note:** If your topic doesn't capture all necessary information, add **Question** nodes to collect missing details before calling the flow.
+      > **Note:** If your topic doesn't capture all necessary information, add **Question** nodes to collect missing details before calling the flow.
 
 1. Add a confirmation message after the flow action and click **Save**.
 
@@ -206,7 +206,7 @@ Now connect each topic to your published **Freshdesk** flow. The AI-generated to
    - For **Subject**, select the appropriate topic variable such as **DeviceType**.
    - For **Description**, select the relevant topic variable such as **IssueDescription**.
 
-   > **Note:** If your topic doesn't have the necessary variables, add **Question** nodes to gather the required information before calling the flow.
+      > **Note:** If your topic doesn't have the necessary variables, add **Question** nodes to gather the required information before calling the flow.
 
 1. Add a confirmation message after the flow action and click **Save**.
 
