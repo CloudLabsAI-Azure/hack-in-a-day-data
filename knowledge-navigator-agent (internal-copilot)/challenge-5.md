@@ -33,9 +33,9 @@ In this challenge, you will publish your agent, add it to Teams, and test the co
 
 ### Step 2: Test Your Agent in Teams
 
-Test all 4 topics you created in Challenge 4:
+Test all 3 topics you created in Challenge 4 and the agent's knowledge search capability:
 
-#### Test DocumentSearch Topic:
+#### Test Knowledge Search:
 
 1. In the agent chat in Teams, type:
    ```
