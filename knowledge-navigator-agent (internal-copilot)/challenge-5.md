@@ -7,7 +7,7 @@ In this challenge, you will publish your agent, add it to Teams, and test the co
 
 ## Challenge Objectives
 - Publish the agent to Microsoft Teams
-- Test all topics and flows in Teams
+- Test topics and flows in Teams
 
 ## Steps to Complete
 
@@ -92,7 +92,7 @@ Test all 3 topics you created in Challenge 4 and the agent's knowledge search ca
 
 ## Success Criteria
 - Publish the agent to Microsoft Teams
-- Test all topics and flows in Teams
+- Test topics and flows in Teams
 
 ## Additional Resources
 - [Publish your agent](https://learn.microsoft.com/microsoft-copilot-studio/publication-fundamentals-publish-channels)  
