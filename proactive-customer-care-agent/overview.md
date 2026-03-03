@@ -1,6 +1,6 @@
 # Build a Proactive Customer Care Agent in a Day
 
-Welcome to the Proactive Customer Care Agent Hack in a Day! Today, you'll explore the power of AI-driven customer service by building an intelligent agent that handles customer inquiries, complaints, and service requests automatically. Through this hands-on experience, you'll learn how to design a conversational AI system using Microsoft Copilot Studio that integrates with Freshdesk for automated ticket creation.
+Welcome to the Proactive Customer Care Agent Hack in a Day! Today, you'll explore the power of AI-driven customer service by building an intelligent agent that handles customer inquiries and service requests automatically. Through this hands-on experience, you'll learn how to design a conversational AI system using Microsoft Copilot Studio that integrates with Freshdesk for automated ticket creation.
 
 ## Scenario
 
