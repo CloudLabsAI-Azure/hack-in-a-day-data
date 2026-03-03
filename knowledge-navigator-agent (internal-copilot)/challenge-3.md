@@ -9,59 +9,51 @@ These flows will be created first so they're ready to use when you build convers
 - Create an agent flow to email documents to employees
 - Create an agent flow to send requests to Microsoft Teams
 - Verify both flows are configured correctly
-- Prepare flows for integration with copilot topics in the next challenge
+- Prepare flows for integration with agent topics in the next challenge
 
 ## Steps to Complete
 
 ### Step 1: Access Agent Flows in Copilot Studio
 
-- In **Microsoft Copilot Studio**, ensure your **Internal Knowledge Navigator** agent is open.
+1. In **Copilot Studio**, ensure your **Internal Knowledge Navigator** agent is open.
 
-- In the left navigation pane, select **Flows** (or **Agent flows**).
+1. In the left navigation pane, select **Flows**.
 
-- You will see the **Agent flows** page with options to create new flows.
+1. You will see the **Agent flows** page with options to create new flows.
 
 ### Step 2: Create Flow 1 - Email Document to Employee
 
-- On the **Agent flows** page, click **+ New agent flow** button.
+1. On the **Agent flows** page, click **+ New agent flow**.
 
-- A new flow canvas will open.
+1. This will open the flow designer.
 
-- The flow will have a default name initially.
+### Step 3: Configure Flow 1 Trigger and Inputs
 
-### Step 3: Add Trigger - When an Agent Calls the Flow
+1. In the **Add a trigger** pane, search for **When an agent calls the flow**, and then select **When an agent calls the flow** under **Skills**.
 
-- On the flow canvas, click **Add a trigger**.
+1. In the trigger node, click **+ Add an input**.
 
-- Search for and select **When an agent calls the flow** (or **When Copilot Studio calls a flow**).
+1. Select **Text** as the input type.
 
-- The trigger will be added to the canvas.
+1. Enter **EmployeeEmail** as the input name and press Enter.
 
-### Step 4: Add Input Parameters for Email Flow
-
-- In the **When an agent calls the flow** trigger, click **Add an input**.
-
-- Select **Text** as the input type.
-
-- Enter **EmployeeEmail** as the input name and press Enter.
-
-- Click **Add an input** again and add:
+1. Click **+ Add an input** again and add:
    - Type: **Text**
    - Name: **DocumentName**
 
-- Click **Add an input** one more time and add:
+1. Click **+ Add an input** one more time and add:
    - Type: **Text**
    - Name: **DocumentDescription**
 
-- You should now have 3 input parameters: EmployeeEmail, DocumentName, and DocumentDescription.
+1. You should now have 3 input parameters: EmployeeEmail, DocumentName, and DocumentDescription.
 
-### Step 5: Add Email Action
+### Step 4: Add Email Action
 
-- Click the **+** icon below the trigger to add a new step.
+1. Below the trigger node, click on **(+)** to add a new step.
 
-- In the search box, type **Send an email** and select **Send an email (V2)** from **Office 365 Outlook**.
+1. In the search box, type **Send an email** and select **Send an email (V2)** from **Office 365 Outlook**.
 
-- If prompted to sign in, use your credentials: **<inject key="AzureAdUserEmail"></inject>**
+1. If prompted to sign in, use your credentials: **<inject key="AzureAdUserEmail"></inject>**
 
 - Configure the email action:
 
@@ -85,69 +77,59 @@ These flows will be created first so they're ready to use when you build convers
    Internal Knowledge Navigator
    ```
 
-- Click **Save** in the top-right corner to save the flow.
+1. Click **Save draft** in the top-right corner to save the flow.
 
-- The flow is now saved with a default name. You'll rename it shortly.
+1. The flow is now saved with a default name. You'll rename it shortly.
 
-### Step 6: Rename Flow 1 - Email Document to Employee
+### Step 5: Rename Flow 1 - Email Document to Employee
 
-- Navigate back to the **Flows** page by clicking the back arrow or selecting **Flows** from the left navigation.
+1. Click **Flow** to return to the Flows page.
 
-- Find your first flow in the list and click on it to open the **Flow overview** page.
+1. In the Flow page, select the **Overview** tab to view the flow details.
 
-- Click **Edit** in the top-right corner.
+1. In the **Overview** tab, select **Edit** to modify the flow details.
 
-- In the flow designer, click on the flow name at the top (it will have a default name).
+1. In the flow designer, click on the flow name at the top (it will have a default name).
 
-- Change the name to:
+1. Change the name to the following:
    ```
    Email Document Flow
    ```
 
-- Click **Save** to save the renamed flow.
+1. Click **Save** to save the renamed flow.
 
-- Click the back arrow to return to the **Flows** page.
+### Step 6: Create Flow 2 - Send Request to Teams
 
-### Step 7: Create Flow 2 - Send Request to Teams
+1. Navigate back to the **Flows** page.
 
-- Navigate back to the **Flows** page by clicking the back arrow.
+1. Click **+ New agent flow**.
 
-- Click **+ New agent flow** button again.
+1. This will open the flow designer.
 
-- A new flow canvas will open.
+### Step 7: Configure Flow 2 Trigger and Inputs
 
-- The flow will have a default name initially.
+1. In the **Add a trigger** pane, search for **When an agent calls the flow**, and then select **When an agent calls the flow** under **Skills**.
 
-### Step 8: Add Trigger - When an Agent Calls the Flow
+1. In the trigger node, click **+ Add an input**.
 
-- On the flow canvas, click **Add a trigger**.
+1. Select **Text** as the input type.
 
-- Search for and select **When an agent calls the flow** (or **When Copilot Studio calls a flow**).
-
-- The trigger will be added to the canvas.
-
-### Step 9: Add Input Parameters for Teams Flow
-
-- In the **When an agent calls the flow** trigger, click **Add an input**.
-
-- Select **Text** as the input type.
-
-- Add the following input parameters one by one:
+1. Add the following input parameters one by one:
 
    1. **EmployeeName** (Text)
-   2. **EmployeeEmail** (Text)
-   3. **RequestType** (Text)
-   4. **RequestDetails** (Text)
+   1. **EmployeeEmail** (Text)
+   1. **RequestType** (Text)
+   1. **RequestDetails** (Text)
 
-- You should now have 4 input parameters defined.
+1. You should now have 4 input parameters defined.
 
-### Step 10: Add Teams Action
+### Step 8: Add Teams Action
 
-- Click the **+** icon below the trigger to add a new step.
+1. Below the trigger node, click on **(+)** to add a new step.
 
-- In the search box, type **Post message** and select **Post message in a chat or channel** from **Microsoft Teams**.
+1. In the search box, type **Post message** and select **Post message in a chat or channel** from **Microsoft Teams**.
 
-- If prompted to sign in, use your credentials: **<inject key="AzureAdUserEmail"></inject>**
+1. If prompted to sign in, use your credentials: **<inject key="AzureAdUserEmail"></inject>**
 
 - Configure the Teams action:
 
@@ -172,34 +154,34 @@ These flows will be created first so they're ready to use when you build convers
    Please review and respond to this request.
    ```
 
-- Click **Save** to save the flow.
+1. Click **Save draft** to save the flow.
 
-- The flow is now saved with a default name. You'll rename it next.
+1. The flow is now saved with a default name. You'll rename it next.
 
-### Step 11: Rename Flow 2 - Send Request to Teams
+### Step 9: Rename Flow 2 - Send Request to Teams
 
-- On the **Flows** page, find your second flow and click on it to open the **Flow overview** page.
+1. Click **Flow** to return to the Flows page.
 
-- Click **Edit** in the top-right corner.
+1. In the Flow page, select the **Overview** tab to view the flow details.
 
-- In the flow designer, click on the flow name at the top.
+1. In the **Overview** tab, select **Edit** to modify the flow details.
 
-- Change the name to:
+1. In the flow designer, click on the flow name at the top.
+
+1. Change the name to the following:
    ```
    Request Teams Flow
    ```
 
-- Click **Save** to save the renamed flow.
+1. Click **Save** to save the renamed flow.
 
-- Click the back arrow to return to the **Flows** page.
+### Step 10: Verify Both Flows are Created and Renamed
 
-### Step 12: Verify Both Flows are Created and Renamed
+1. On the **Flows** page, you should now see both agent flows listed with their correct names:
+   - Email Document Flow
+   - Request Teams Flow
 
-- On the **Flows** page, you should now see both agent flows listed with their correct names:
-   - Email Document to Employee
-   - Send Request to Teams
-
-- Both flows should show as **On** or **Active** status.
+1. Both flows should show as **On** or **Active** status.
 
    > **Note:** These flows are now ready to be used in your agent topics in Challenge 4.
 

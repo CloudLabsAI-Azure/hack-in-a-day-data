@@ -3,14 +3,14 @@
 ## Introduction
 Now that you've created your Internal Knowledge Navigator copilot and uploaded all Contoso company documents to SharePoint in Challenge 1, it's time to connect that SharePoint site to your copilot as a knowledge source. This will enable your copilot to search through all 40+ company documents and provide accurate answers to employee questions.
 
-In this challenge, you'll connect the SharePoint site to Copilot Studio, verify the knowledge source is properly indexed, and test basic knowledge retrieval to ensure your copilot can answer questions using the Contoso documents.
+In this challenge, you'll connect the SharePoint site to Copilot Studio, verify the knowledge source is properly indexed, and test basic knowledge retrieval to ensure your agent can answer questions using the Contoso documents.
 
 ## Challenge Objectives
 - Connect the SharePoint site as a knowledge source in Copilot Studio
 - Verify all documents are successfully indexed
 - Configure knowledge source settings
 - Test basic knowledge retrieval across different document types
-- Ensure the copilot responds using Contoso company documents
+- Ensure the agent responds using Contoso company documents
 
 ## Prerequisites
 

@@ -15,8 +15,8 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ## Challenge Objectives
 - Sign in to Microsoft Copilot Studio
-- Create a new Copilot for internal knowledge navigation
-- Configure basic copilot settings and identity
+- Create a new agent for internal knowledge navigation
+- Configure basic agent settings and identity
 - Prepare for knowledge base upload in the next challenge
 
 ## Steps to Complete
@@ -66,23 +66,40 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ### Step 2: Create a New Agent
 
-1. Open **Microsoft Copilot Studio**.
+1. Open **Microsoft Edge** browser in your lab VM.
 
-1. On the Copilot Studio pane, from left menu select **Create** and then click on **+New Agent** option to create a new agent.
+1. If not already open, navigate to **Microsoft Copilot Studio** by entering the following URL in the browser:
 
-1. If any error shows up like `There was a problem creating your agent.`, then please click on **Create a blank agent**.
+   ```
+   https://copilotstudio.microsoft.com
+   ```
 
-1. On the overview pane of the agent, click on **edit** inside Details card to edit agent's name and description.
+1. Click **Sign in**.
 
-1. Configure the Copilot details as below:
+1. Enter the provided credentials:
+
+   - **Email/Username: <inject key="AzureAdUserEmail"></inject>**
+   - **Password: <inject key="AzureAdUserPassword"></inject>**
+
+1. If prompted with **"Stay signed in?"**, click **No**.
+
+1. Wait for the Copilot Studio home page to load.
+
+1. Ensure the environment is **ODL_User<inject key="DeploymentID"></inject>**.
+
+1. In Copilot Studio, select **Agents** from the left navigation pane, and then click **Create blank agent** to start creating a new agent.
+
+1. On the overview pane of the agent, click on **edit** inside the Details card to edit the agent's name and description.
+
+1. Configure the agent details as follows:
 
    - **Name:** `Internal Knowledge Navigator`
 
    - **Description:** `This agent helps employees quickly find Contoso company policies, procedures, and guidelines across all departments including HR, IT, Procurement, Finance, Sales, and Operations. It provides accurate answers with document citations from official company documents, guides users through common processes, and can trigger helpful actions like emailing documents or creating support tickets.`
 
-1. Click on save.
+1. Click on **Save**.
 
-1. Once done, scroll down and add below **instructions** by clicking on **edit** inside Instruction card.
+1. Once done, scroll down and add the following **instructions** by clicking on **edit** inside the Instruction card.
 
      ```
      - Respond only to queries related to Contoso internal company policies, procedures, business operations, and department-specific guidelines.
@@ -98,11 +115,11 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
      - Focus on providing information from official Contoso documents rather than general knowledge
      ```
 
-1. Click on save.
+1. Click on **Save**.
 
-### Step 3: Customize Copilot Icon and Identity
+### Step 3: Customize Agent Icon and Identity
 
-- Once the copilot is created, you'll see the authoring canvas.
+- Once the agent is created, you'll see the authoring canvas.
 
 - Click on **Settings** (gear icon) in the top-right corner.
 
@@ -116,19 +133,19 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 - Click **Save** to apply changes.
 
-### Step 4: Test Basic Copilot Greeting
+### Step 4: Test Basic Agent Greeting
 
-- Click **Test your copilot** button (usually in the top-right corner).
+- Click the **Test** button to open the test panel on the right side.
 
-- In the test pane, the copilot should greet you with the welcome message.
+- In the test pane, the agent should greet you with the welcome message.
 
 - Try typing a simple question like:
    - "Hello"
    - "What can you help me with?"
 
-- Verify that the copilot responds appropriately with the greeting.
+- Verify that the agent responds appropriately with the greeting.
 
-- Note that specific knowledge questions won't work yet - you'll add knowledge sources in the next challenge.
+- Note that specific knowledge questions won't work yet. You'll add knowledge sources in the next challenge.
 
 ### Step 5: Save Your Progress
 
@@ -146,9 +163,8 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
 
 ## Success Criteria
-- Successfully signed in to Microsoft Copilot Studio
-- Created a new copilot named **Internal Knowledge Navigator**
-- Configured copilot with appropriate description and icon
+- Created a new agent named **Internal Knowledge Navigator**
+- Configured agent with appropriate description and icon
 - Verified basic greeting functionality
 - Ready to proceed with knowledge base upload
 
