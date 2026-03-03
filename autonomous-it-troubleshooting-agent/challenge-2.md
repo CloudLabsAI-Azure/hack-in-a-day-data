@@ -118,6 +118,5 @@ In this challenge, you will activate your Freshdesk free trial, configure your a
 ## Additional Resources
 - [Freshdesk Documentation](https://support.freshdesk.com/)
 - [Freshdesk API Overview](https://developers.freshdesk.com/api/)
-- [Freshdesk Getting Started Guide](https://freshdesk.com/resources/getting-started)
 
 Now, click **Next** to continue to **Challenge 03: Create Freshdesk Ticket Flow**.

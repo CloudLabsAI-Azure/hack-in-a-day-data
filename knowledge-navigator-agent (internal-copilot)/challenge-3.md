@@ -199,7 +199,6 @@ These flows will be created first so they're ready to use when you build convers
 
 ## Additional Resources
 - [Create flows for Microsoft Copilot Studio](https://learn.microsoft.com/microsoft-copilot-studio/advanced-flow)
-- [Use flows in Copilot Studio](https://learn.microsoft.com/microsoft-copilot-studio/authoring-create-edit-flows)
 - [Office 365 Outlook connector](https://learn.microsoft.com/connectors/office365/)
 - [Microsoft Teams connector](https://learn.microsoft.com/connectors/teams/)
 

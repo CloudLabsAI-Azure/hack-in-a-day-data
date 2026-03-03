@@ -218,6 +218,5 @@ Now connect each topic to your published **Freshdesk** flow. The AI-generated to
 ## Additional Resources
 - [Create topics with Copilot](https://learn.microsoft.com/microsoft-copilot-studio/authoring-create-edit-topics)  
 - [Use generative AI for topic creation](https://learn.microsoft.com/microsoft-copilot-studio/nlu-authoring)  
-- [Call flows from topics](https://learn.microsoft.com/microsoft-copilot-studio/authoring-call-action)
 
 Now, click **Next** to continue to **Challenge 05: Test Your IT Helpdesk Copilot End-to-End**.

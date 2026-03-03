@@ -273,7 +273,6 @@ Now connect each topic to your published **CustomerServiceFlow**. The AI-generat
 ## Additional Resources
 - [Create topics with Copilot](https://learn.microsoft.com/microsoft-copilot-studio/authoring-create-edit-topics)
 - [Use generative AI for topic creation](https://learn.microsoft.com/microsoft-copilot-studio/nlu-authoring)
-- [Call flows from topics](https://learn.microsoft.com/microsoft-copilot-studio/authoring-call-action)
 
 ---
 
