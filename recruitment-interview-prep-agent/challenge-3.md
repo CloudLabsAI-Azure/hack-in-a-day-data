@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The HR Interview Copilot now has access to Job Descriptions and Resumes through the Knowledge section.  
+The HR Interview Copilot now has access to **Job Descriptions** and **Resumes** through the Knowledge section.  
 In this challenge, you will create two interactive interview topics that:
 1) Ask the user for input  
 2) Use uploaded documents as the grounding source  
@@ -26,7 +26,7 @@ This ensures the Copilot behaves like a real HR assistant rather than a generic 
 1. In the topic setup panel, under **Describe what this topic does**, enter:
 
    ```
-   Generates interview question sets based on the job role and experience level. It asks the user which role and seniority to focus on, then produces 6–10 technical and behavioral interview questions grounded in the Job Description documents.
+   Generates interview question sets based on the job role and experience level. It asks the user which role and seniority to focus on, then produces 6–10 technical and behavioural interview questions grounded in the Job Description documents.
    ```
 
 1. In the topic flow editor, add a new **Ask a question** node and add the below question in the input area:
@@ -35,7 +35,7 @@ This ensures the Copilot behaves like a real HR assistant rather than a generic 
    Which role do you want interview questions for, Software Developer or AI Engineer?
    ```
 
-1. Under Identify, select **User’s entire response**.
+1. Under Identify, select **User's entire response**.
 
 1. Add one more Ask a question node and type:
    
@@ -43,7 +43,7 @@ This ensures the Copilot behaves like a real HR assistant rather than a generic 
    What is the experience level for this role? (Junior / Mid-Level / Senior)
    ```
 
-1. Under Identify, again select **User’s entire response**.
+1. Under Identify, again select **User's entire response**.
 
 1. Add a new node, select Advanced and choose **Generative answers**.
 
@@ -81,7 +81,7 @@ This ensures the Copilot behaves like a real HR assistant rather than a generic 
    Which job role should I evaluate the resume for, Software Developer or AI Engineer?
    ```
 
-1. Under Identify, select **User’s entire response**.
+1. Under Identify, select **User's entire response**.
 
 1. Add one more Ask a question node and type:
 
@@ -89,7 +89,7 @@ This ensures the Copilot behaves like a real HR assistant rather than a generic 
    Please specify which candidate resume I should evaluate.
    ```
 
-1. Under Identify, again select **User’s entire response**.
+1. Under Identify, again select **User's entire response**.
 
 1. Add a new node, select Advanced and choose **Generative answers**.
 
@@ -154,4 +154,5 @@ This ensures the Copilot behaves like a real HR assistant rather than a generic 
 - Responses reference only the uploaded knowledge sources.
 - Generative answers DO NOT rely on open-world/general AI knowledge.
 
-Click Next to continue to Challenge 04: Build the Live Interview Support Mode.
+---
+Click **Next** to continue to **Challenge 04: Build the Live Interview Support Mode**.
