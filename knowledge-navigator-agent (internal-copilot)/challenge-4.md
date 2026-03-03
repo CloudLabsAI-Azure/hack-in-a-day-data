@@ -3,7 +3,7 @@
 ## Introduction
 Now that your agent flows are ready, you'll create conversational topics using generative AI in Copilot Studio. Simply describe what you want the topic to do, and AI will generate the conversation flow, trigger phrases, and responses automatically. You'll then connect these topics to your published agent flows.
 
-In this challenge, you will create 4 topics that help employees: Document Search, Email Document, Submit Request, and New Employee Onboarding. Topics will call your published agent flows when needed.
+In this challenge, you will create 3 topics that help employees: Email Document, Submit Request, and New Employee Onboarding. Topics will call your published agent flows when needed.
 
 ## Challenge Objectives
 - Use Copilot Studio's generative AI to create 3 topics
@@ -127,8 +127,6 @@ In this challenge, you will create 4 topics that help employees: Document Search
 
 1. In the **SubmitRequest** topic.
 
-1. Navigate through the topic flow and identify where all variables are collected (At the bottom).
-
 1. **Important:** If the AI created a multiple choice question for request type, convert it to text:
 
    1. Select the **+** button below the multiple choice question node, and then choose **Variable management**.
@@ -137,13 +135,21 @@ In this challenge, you will create 4 topics that help employees: Document Search
 
    1. In the **Set variable** field, select the picker, and then choose **Create a new variable**.
 
-   1. In the **Set variable value** node, select the variable name, enter `RequestTypeText` in the **Variable name** field, and then select **Close** to save the variable.
+   1. In the **Set variable value** node, select the variable name **var1**, rename it to `RequestTypeText` in the **Variable name** field, and then click on **Close** to save the variable.
 
-   1. In the **To value** field, select the picker, switch to **Formula**, enter `Text(Topic.RequestType)`, and then select **Insert**.
+   1. In the **To value** field, select the picker, and then choose any string variable such as **EmployeeName** or **EmployeeEmail** from the list.
 
-   1. In the **Set variable value** node, verify that **RequestTypeText** is set to type **string**, and confirm the value is assigned correctly.
+      > **Note:** You are doing this so the variable type becomes string, which is required by the flow input.
 
-   > **Note:** You are doing this so the variable type becomes string, which is required by the flow input.
+   1. In the **Set variable value** node, verify that **RequestTypeText** is set to type **string**.
+
+   1. Now Again in the **To value** field, select the picker, switch to **Formula**, enter the below formula, and then select **Insert**.
+
+      ```
+      Text(Topic.RequestType)
+      ```
+
+1. Navigate through the topic flow and identify where all variables are collected (At the bottom).
 
 1. Add the **Request Teams Flow** tool:
    - Click the **+** icon.
@@ -156,23 +162,20 @@ In this challenge, you will create 4 topics that help employees: Document Search
    - **RequestType:** Select the `RequestTypeText` variable (NOT the multiple choice variable)
    - **RequestDetails:** Select the details variable
 
-   > **Note:** If you see a type mismatch error for RequestType, make sure you're using the text variable, not the multiple choice variable.
+      > **Note:** If you see a type mismatch error for RequestType, make sure you're using the text variable, not the multiple choice variable.
 
 1. **Important:** If you see an error about limited scope or variables:
    - Open the **Variables** pane.
    - Click on each variable under **Topic**.
    - Enable the both the checkbox for **Receive values from other topics** or **Return values to original topics** for Variables which shows error.
 
-1. Add a confirmation message after the flow action and click **Save**.
-
 ### Step 6: Review All Topics
 
-1. In the **Topics** list, verify you now have 4 custom topics:
+1. In the **Topics** list, verify you now have 3 custom topics:
 
-   - DocumentSearch
+   - NewEmployeeOnboarding
    - EmailDocument
    - SubmitRequest
-   - NewEmployeeOnboarding
 
 1. Ensure all topics are **enabled** (toggle should be on).
 
@@ -180,7 +183,7 @@ In this challenge, you will create 4 topics that help employees: Document Search
 
 By now, you should have connected your topics to flows as part of Steps 3 and 4. Let's verify everything is set up correctly:
 
-1. Go to the **Topics** page and verify all 4 topics are created and enabled.
+1. Go to the **Topics** page and verify all 3 topics are created and enabled.
 
 1. Open **EmailDocument** topic and verify:
    - It has an **Add a tool** node pointing to **Email Document Flow**
@@ -192,13 +195,13 @@ By now, you should have connected your topics to flows as part of Steps 3 and 4.
    - All four flow inputs are mapped correctly (especially RequestTypeText variable)
    - There's a confirmation message after the flow action
 
-1. **DocumentSearch** and **NewEmployeeOnboarding** topics should NOT have any flow connections. They use generative answers only.
+1. **NewEmployeeOnboarding** topic should NOT have any flow connections. It uses generative answers only.
 
 ### Step 8: Test All Topics
 
 Click the **Test** button to open the test panel on the right side.
 
-#### Test DocumentSearch:
+#### Test Knowledge Search:
 
 1. Type: `Where can I find information about employee benefits?`
 
@@ -207,6 +210,8 @@ Click the **Test** button to open the test panel on the right side.
 1. Try another query: `What are the expense reimbursement policies?`
 
 1. Verify generative answers are provided from the knowledge base without calling any flows.
+
+   > **Note:** The agent answers knowledge search queries automatically using the SharePoint knowledge source connected in Challenge 2. No dedicated topic is needed for this.
 
 #### Test EmailDocument:
 
@@ -268,13 +273,13 @@ Click the **Test** button to open the test panel on the right side.
 1. Ensure all steps in the flows completed successfully.
 
 ## Success Criteria
-- Created topics using generative AI:
+- Created 3 topics using generative AI
 - Flow-connected topics successfully call their respective agent flows
 - Topic variables correctly mapped to flow inputs
 - Test conversations trigger flows successfully
 - Emails received for EmailDocument topic requests
 - Teams messages posted for SubmitRequest topic
-- Generative answers provided for DocumentSearch and NewEmployeeOnboarding topics
+- Generative answers provided for knowledge search and NewEmployeeOnboarding topics
 
 ## Additional Resources
 - [Create topics with Copilot](https://learn.microsoft.com/microsoft-copilot-studio/nlu-authoring)
