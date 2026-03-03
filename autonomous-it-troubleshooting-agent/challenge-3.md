@@ -36,7 +36,7 @@ In this challenge, you will create an agent flow with the Freshdesk connector th
 
 1. Add one more input:
 
-   **Input 2:**
+   - **Input 2:**
    - Type: **Text**
    - Name: `Description`
 
@@ -55,6 +55,7 @@ In this challenge, you will create an agent flow with the Freshdesk connector th
 1. Click **Create new** (or **+ New connection**).
 
 1. Provide the following connection details:
+
    - **Connection name:** `helpdesk`
    - **Account URL:** Paste the Account URL you copied in Challenge 02 (e.g., `https://your-account.freshdesk.com`)
    - **Email or API key:** Paste the **API Key** you copied in Challenge 02
@@ -67,11 +68,13 @@ In this challenge, you will create an agent flow with the Freshdesk connector th
 1. Once the connection is created, configure the **Create a ticket** action fields:
 
 1. **Subject** parameter:
+
    - Click in the **Subject** field
    - Click **Dynamic content** option
    - Select **Subject** from the trigger's input variables
 
 1. **Description** parameter:
+
    - Click in the **Description** field
    - Click **Dynamic content**
    - Select **Description** variable
@@ -81,9 +84,11 @@ In this challenge, you will create an agent flow with the Freshdesk connector th
    > **Note:** If the options do not load, select **Enter custom value**, and then enter **<inject key="AzureAdUserEmail"></inject>** in the **Email** field.
 
 1. **Priority** parameter:
+
    - Select **Medium** from the dropdown
 
 1. **Status** parameter:
+
    - Select **Open** from the dropdown
 
 1. Select **Publish** to publish the flow.
@@ -95,6 +100,7 @@ In this challenge, you will create an agent flow with the Freshdesk connector th
 1. Click **+ Add an output**.
 
 1. Configure output as follows:
+
    - Type: **Text**
    - Name: `TicketStatus`
    - Value: Type `Ticket created successfully`
@@ -103,17 +109,11 @@ In this challenge, you will create an agent flow with the Freshdesk connector th
 
 1. Click **Save draft** in the top-right corner of the flow designer.
 
-1. The flow will be saved with a default name initially.
-
-1. Wait for the flow to save successfully.
-
 1. Now click **Publish** in the top-right corner.
 
 1. Wait for the flow to be published.
 
 1. You'll see a confirmation message: "Your flow has been published."
-
-1. Click **Flow** to return to Copilot Studio.
 
 ### Step 4: Rename the Flow
 
