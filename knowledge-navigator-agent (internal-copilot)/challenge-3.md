@@ -53,7 +53,7 @@ These flows will be created first so they're ready to use when you build convers
 
 1. In the search box, type **Send an email** and select **Send an email (V2)** from **Office 365 Outlook**.
 
-1. If prompted to sign in, use your credentials: **<inject key="AzureAdUserEmail"></inject>**
+1. If prompted to sign in, use Lab credentials: **<inject key="AzureAdUserEmail"></inject>**
 
 1. Configure the email action:
 
@@ -77,9 +77,7 @@ These flows will be created first so they're ready to use when you build convers
    Internal Knowledge Navigator
    ```
 
-1. Click **Save draft** in the top-right corner to save the flow.
-
-1. The flow is now saved with a default name. You'll rename it shortly.
+1. Click **Publish** in the top-right corner.
 
 ### Step 5: Rename Flow 1 - Email Document to Employee
 
@@ -129,7 +127,7 @@ These flows will be created first so they're ready to use when you build convers
 
 1. In the search box, type **Post message** and select **Post message in a chat or channel** from **Microsoft Teams**.
 
-1. If prompted to sign in, use your credentials: **<inject key="AzureAdUserEmail"></inject>**
+1. If prompted to sign in, use Lab credentials: **<inject key="AzureAdUserEmail"></inject>**
 
 1. Configure the Teams action:
 
@@ -139,22 +137,22 @@ These flows will be created first so they're ready to use when you build convers
 
    - **Team:** Select Exisitng
 
-   - **Channel:** Document Request
+   - **Channel:** **Document Request-<inject key="DeploymentID"></inject>**
    
-   ```
-   New Employee Request Submitted
+      ```
+      New Employee Request Submitted
 
-   Employee: [Add EmployeeName dynamic content]
-   Email: [Add EmployeeEmail dynamic content]
-   Request Type: [Add RequestType dynamic content]
+      Employee: [Add EmployeeName dynamic content]
+      Email: [Add EmployeeEmail dynamic content]
+      Request Type: [Add RequestType dynamic content]
 
-   Details:
-   [Add RequestDetails dynamic content]
+      Details:
+      [Add RequestDetails dynamic content]
 
-   Please review and respond to this request.
-   ```
+      Please review and respond to this request.
+      ```
 
-1. Click **Save draft** to save the flow.
+1. Click **Publish** in the top-right corner.
 
 1. The flow is now saved with a default name. You'll rename it next.
 
