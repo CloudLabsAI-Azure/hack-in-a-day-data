@@ -1,77 +1,37 @@
 # Challenge 05: Publish Your Agent to Microsoft Teams
 
 ## Introduction
-The final step is to deploy your Internal Knowledge Navigator agent to Microsoft Teams, making it accessible to employees in your organization. Teams is the perfect channel for knowledge sharing—employees can get help directly where they already collaborate and communicate.
+The final step is to deploy your Internal Knowledge Navigator agent to Microsoft Teams, making it accessible to employees in your organization. Teams is the perfect channel for knowledge sharing, as employees can get help directly where they already collaborate and communicate.
 
-In this challenge, you will publish your agent, add it to Teams, test the complete user experience, and share it with your organization.
+In this challenge, you will publish your agent, add it to Teams, and test the complete user experience.
 
 ## Challenge Objectives
-- Publish your agent from Copilot Studio
-- Add the agent to Microsoft Teams
+- Publish the agent to Microsoft Teams
 - Test all topics and flows in Teams
-- Configure availability and permissions
-- Share the agent with your organization
 
 ## Steps to Complete
 
-### Step 1: Publish Your Agent
+### Step 1: Publish the Agent to Microsoft Teams
 
 1. In **Copilot Studio**, ensure you're in your **Internal Knowledge Navigator** agent.
 
-2. Click **Publish** in the top-right corner (or in the left navigation).
+1. Select **Channels**, and then choose **Teams and Microsoft 365 Copilot** under *Microsoft channels*.
 
-3. Review the pre-publish checklist:
-   - Topics are configured
-   - Knowledge sources are active
-   - Flows are connected
+1. Uncheck the **Make agent available in Microsoft 365 Copilot** checkbox, review the **Agent preview** section, and then click **Add channel**.
 
-4. Click **Publish** to deploy the latest version.
+1. After the channel is added successfully, select **See agent in Teams** under *Agent preview*.
 
-5. Wait for publishing to complete (this may take 1-2 minutes).
+1. If prompted with **Open Microsoft Teams?**, select **Cancel** to proceed.
 
-6. You'll see a success message when publishing is done.
+1. On the Teams welcome page, select **Use the web app instead** to continue in the browser.
 
-### Step 2: Configure Teams Channel
+1. In Microsoft Teams, select **Add** to install the **Internal Knowledge Navigator** app.
 
-1. After publishing, click **Channels** in the left navigation.
+   > **Note:** If you do not see the **Add** option, return to the previous steps and reperform.
 
-2. Find **Microsoft Teams** in the available channels list.
+1. After the app is added successfully, select **Open** to launch **Internal Knowledge Navigator**.
 
-3. Click on **Microsoft Teams** to expand options.
-
-4. Click **Turn on Teams** or **Open** (if already enabled).
-
-5. You'll see options for Teams deployment:
-   - **For you and your teammates** - Adds to your Teams
-   - **For your organization** - Submits to Teams app catalog (requires admin approval)
-
-6. Select **Availability options** → **Show to everyone in my org**.
-
-7. Click **Submit for admin approval** (or **Add to Teams** if you have permissions).
-
-### Step 3: Add Agent to Your Teams
-
-1. Open **Microsoft Teams** (desktop or web):
-
-   ```
-   https://teams.microsoft.com
-   ```
-
-2. Sign in with your credentials:
-   - **Email/Username: <inject key="AzureAdUserEmail"></inject>**
-   - **Password: <inject key="AzureAdUserPassword"></inject>**
-
-3. In Teams, click **Apps** in the left sidebar.
-
-4. Search for **Internal Knowledge Navigator**.
-
-5. Click on your agent in the search results.
-
-6. Click **Add** to add it to your Teams.
-
-7. The agent chat will open automatically.
-
-### Step 4: Test Your Agent in Teams
+### Step 2: Test Your Agent in Teams
 
 Test all 4 topics you created in Challenge 4:
 
@@ -144,88 +104,6 @@ Test all 4 topics you created in Challenge 4:
 
 4. Verify the agent provides helpful answers from the knowledge base.
 
-### Step 5: Configure Agent Availability
-
-1. Go back to **Copilot Studio** → **Channels** → **Microsoft Teams**.
-
-2. Review availability settings:
-   - **Show to everyone in my org** - Recommended for company-wide access
-   - **Show to users or groups** - For limited rollout
-   - **Hide from others** - For testing only
-
-3. Select **Show to everyone in my org** (or appropriate option).
-
-4. Click **Save**.
-
-### Step 6: Share Agent with Your Team
-
-1. In **Teams**, with your agent open, click **Share** (if available).
-
-2. Alternatively, copy the agent link from Copilot Studio:
-   - Go to **Channels** → **Microsoft Teams**
-   - Click **Availability options**
-   - Copy the **Share link**
-
-3. Share this link via:
-   - Email to your team
-   - Teams channel announcement
-   - Company intranet
-
-4. Example message to share:
-   ```
-   New Internal Knowledge Navigator Available!
-
-   Get instant access to company information directly in Teams. Our new agent can help with:
-   - Searching company documents
-   - Emailing documents to you
-   - Submitting requests to the team
-   - New employee onboarding
-
-   Click here to start chatting: [Agent Link]
-   ```
-
-### Step 7: Pin Agent in Teams (Optional)
-
-1. In **Teams**, right-click on your agent in the left sidebar.
-
-2. Select **Pin** to keep it easily accessible.
-
-3. You can also add it to a specific team or channel:
-   - Go to a team → Click **+** to add a tab
-   - Search for your agent
-   - Add it as a tab for easy access
-
-### Step 8: Verify Flow Execution
-
-1. Go back to **Copilot Studio**.
-
-2. Click **Flows** in the left navigation.
-
-3. Click on each flow (**Email Document to Employee** and **Send Request to Teams**) to view run history.
-
-4. Verify that the flows were triggered by your Teams tests.
-
-5. Check that the inputs were passed correctly.
-
-6. Ensure all steps in the flows completed successfully.
-
-### Step 9: Monitor Usage and Performance
-
-1. In **Copilot Studio**, go to **Analytics** in the left navigation.
-
-2. Review metrics:
-   - **Total sessions:** How many conversations
-   - **Engagement rate:** User interaction level
-   - **Resolution rate:** Topics successfully completed
-   - **Escalation rate:** How often flows are called
-
-3. Identify improvement opportunities:
-   - Topics with low resolution
-   - Common fallback triggers
-   - Frequently asked questions
-
-4. Iterate and improve based on analytics.
-
 <validation step="09e05d19-df23-42fd-8688-4262e3dcdb95" />
  
 > **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
@@ -234,18 +112,8 @@ Test all 4 topics you created in Challenge 4:
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
 
 ## Success Criteria
-- Agent successfully published from Copilot Studio
-- Agent deployed and accessible in Microsoft Teams
-- All 4 topics tested successfully in Teams:
-  - DocumentSearch works with generative answers
-  - EmailDocument flow sends emails successfully
-  - SubmitRequest flow posts to Teams channel
-  - NewEmployeeOnboarding provides helpful responses
-- Flows execute successfully and appear in run history
-- Agent availability configured appropriately
-- Share link created and ready to distribute
-- Analytics reviewed for usage insights
-- Complete solution working end-to-end
+- Publish the agent to Microsoft Teams
+- Test all topics and flows in Teams
 
 ## Additional Resources
 - [Publish your agent](https://learn.microsoft.com/microsoft-copilot-studio/publication-fundamentals-publish-channels)  
@@ -259,10 +127,10 @@ You have successfully built an **AI-powered Internal Knowledge Navigator Agent**
 
 ### Real-World Applications:
 This solution can transform knowledge management across:
-- **HR & Employee Services** - Onboarding, policies, benefits inquiries
-- **IT Support** - Self-service help desk, documentation access
-- **Compliance & Training** - Policy distribution, procedure guidance
-- **Sales Enablement** - Playbooks, product information, pricing guidelines
-- **Operations** - Process documentation, vendor management, procurement workflows
+- **HR & Employee Services:** Onboarding, policies, benefits inquiries
+- **IT Support:** Self-service help desk, documentation access
+- **Compliance & Training:** Policy distribution, procedure guidance
+- **Sales Enablement:** Playbooks, product information, pricing guidelines
+- **Operations:** Process documentation, vendor management, procurement workflows
 
 Congratulations on completing this challenge! 
