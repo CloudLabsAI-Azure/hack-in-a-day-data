@@ -149,6 +149,6 @@ Now you'll create a Microsoft Teams channel where employee requests will be post
 - [Generative answers with uploaded files](https://learn.microsoft.com/microsoft-copilot-studio/nlu-boost-node)  
 - [Manage knowledge sources](https://learn.microsoft.com/microsoft-copilot-studio/knowledge-manage-sources)
 
----
+Click **Next** at the bottom of the page to proceed to the next page.
 
-Now, click **Next** to continue to **Challenge 03: Design Department Topics**.
+   ![](./media/auto-it-gt-gr-g5.png)

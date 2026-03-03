@@ -205,6 +205,6 @@ These flows will be created first so they're ready to use when you build convers
 - [Office 365 Outlook connector](https://learn.microsoft.com/connectors/office365/)
 - [Microsoft Teams connector](https://learn.microsoft.com/connectors/teams/)
 
----
+Click **Next** at the bottom of the page to proceed to the next page.
 
-Now, click **Next** to continue to **Challenge 04: Design Topics and Integrate Flows**.
+   ![](./media/auto-it-gt-gr-g6.png)
