@@ -48,8 +48,8 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 1. Configure the agent details as follows:
 
-  - **Name:** `Customer Care Copilot`
-  - **Description:** `AI-powered assistant for customer service automation including order tracking, complaint management, service inquiries, and product support`
+   - **Name:** `Customer Care Copilot`
+   - **Description:** `AI-powered assistant for customer service automation including order tracking, complaint management, service inquiries, and product support`
 
 1. Click on **Save**.
 
