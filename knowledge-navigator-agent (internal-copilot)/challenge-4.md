@@ -123,7 +123,7 @@ In this challenge, you will create 3 topics that help employees: Email Document,
 
 1. Click on **Save**.
 
-#### Connect SubmitRequest Topic to Flow:
+#### Step 5: Connect SubmitRequest Topic to Flow:
 
 1. In the **SubmitRequest** topic.
 
