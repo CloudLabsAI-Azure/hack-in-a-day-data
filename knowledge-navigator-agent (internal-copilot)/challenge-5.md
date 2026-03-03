@@ -44,12 +44,7 @@ Test all 3 topics you created in Challenge 4 and the agent's knowledge search ca
 
 2. Verify the agent searches the SharePoint knowledge base and provides relevant information.
 
-3. Try another query:
-   ```
-   What are the expense reimbursement policies?
-   ```
-
-4. Verify generative answers are provided from the knowledge base.
+3. Verify generative answers are provided from the knowledge base.
 
 #### Test EmailDocument Topic:
 
@@ -87,22 +82,6 @@ Test all 3 topics you created in Challenge 4 and the agent's knowledge search ca
 4. Verify the flow runs and you receive the confirmation message.
 
 5. Check your Microsoft Teams **Document Request** channel to see if the request was posted.
-
-#### Test NewEmployeeOnboarding Topic:
-
-1. Click **New test session** to start a fresh conversation.
-
-2. Type:
-   ```
-   I'm a new employee and need help getting started
-   ```
-
-3. Ask questions like:
-   - "What benefits do I get?"
-   - "What's the onboarding process?"
-   - "Where can I find IT policies?"
-
-4. Verify the agent provides helpful answers from the knowledge base.
 
 <validation step="09e05d19-df23-42fd-8688-4262e3dcdb95" />
  
