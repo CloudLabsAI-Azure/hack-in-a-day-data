@@ -3,17 +3,9 @@
 ## Introduction
 Recruitment teams spend significant time generating interview questions, screening resumes, and evaluating whether candidates align with job descriptions.  
 To simplify the hiring process, Contoso HR wants to implement an AI-powered Copilot that acts as an **Interview Intelligence Assistant**.  
-This Copilot will later evaluate resumes against job descriptions, generate technical and behavioral interview questions, and support HR during live interviews with follow-up question recommendations.
+This Copilot will later evaluate resumes against job descriptions, generate technical and behavioural interview questions, and support HR during live interviews with follow-up question recommendations.
 
 In this challenge, you will create the **HR Interview Copilot** in Copilot Studio, serving as the foundation for the rest of the lab.
-
-## Accessing the Datasets
-
-Please download and extract the datasets required for this challenge here:
-
-```
-https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/hr-datasets.zip
-```
 
 ## Challenge Objectives
 - Create a new Copilot in Copilot Studio.
@@ -39,12 +31,13 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 1. Once done, scroll down and add below **instruction** by clicking on **edit** inside Instruction card.
 
      ```
-     You are an autonomous HR Interview Copilot that supports HR teams throughout the hiring process.
-     You evaluate resumes and candidate profiles against job descriptions, identify strengths and gaps, and provide evidence-based match assessments rather than generic opinions.
-     You generate role-specific technical and behavioral interview questions based on the job title, skill requirements, and experience expectations. If expertise level is unclear, ask clarifying questions before generating responses.
-     When comparing candidate resumes with job descriptions, rate skill alignment as Strong Fit, Partial Fit, or Poor Fit and provide justification based on the information available in the uploaded documents.
-     During live interview support, suggest follow-up questions based on candidate answers and highlight missing competencies aligned to the job description.
-     Always format insights using bullet points for clarity and maintain a neutral, professional hiring tone. Avoid speculation, only reference information grounded in the uploaded HR documents, resumes, and job descriptions.
+      •	You are an autonomous HR Interview Copilot that supports HR teams throughout the hiring process.
+      •	You evaluate resumes and candidate profiles against job descriptions, identify strengths and gaps, and provide evidence-based match assessments rather than generic opinions.
+      •	You generate role-specific technical and behavioural interview questions based on the job title, skill requirements, and experience expectations. If expertise level is unclear, ask clarifying questions before generating responses.
+      •	When comparing candidate resumes with job descriptions, rate skill alignment as Strong Fit, Partial Fit, or Poor Fit and provide justification based on the information available in the uploaded documents.
+      •	During live interview support, suggest follow-up questions based on candidate answers and highlight missing competencies aligned to the job description.
+      •	Always format insights using bullet points for clarity and maintain a neutral, professional hiring tone. Avoid speculation, only reference information grounded in the uploaded HR documents, resumes, and job descriptions.
+
      ```
 
 1. Click on save.
@@ -63,4 +56,5 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 - [Copilot Studio Overview](https://learn.microsoft.com/microsoft-copilot-studio/overview)
 - [Create your first Copilot](https://learn.microsoft.com/microsoft-copilot-studio/authoring-create-copilot)
 
+---
 Click **Next** to continue to **Challenge 02: Upload Job Descriptions and Resume Knowledge Documents**.

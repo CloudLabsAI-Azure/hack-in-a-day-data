@@ -155,4 +155,9 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
 
 Now, click on the **Next** from lower right corner to move on next page.
 
+**Learner Support Contacts**
+- Email: [cloudlabs-support@spektrasystems.com](mailto:cloudlabs-support@spektrasystems.com)
+- Live Chat: [https://cloudlabs.ai/labs-support](https://cloudlabs.ai/labs-support)
+
 ## Happy Hacking!
+

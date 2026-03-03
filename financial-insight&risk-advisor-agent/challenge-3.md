@@ -129,7 +129,8 @@ This makes the agent conversational and context-aware.
   - A final, clearly stated risk level  
 
 ## Additional Resources
-- https://learn.microsoft.com/microsoft-copilot-studio/topics  
-- https://learn.microsoft.com/microsoft-copilot-studio/knowledge
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio  
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-copilot-studio
 
 Click **Next** to continue to **Challenge 04: Configure Email Escalation Flow and Integrate it With the Copilot**.
+

@@ -27,6 +27,8 @@ Once published, you will add the Copilot to Teams and test the complete hiring w
 
 1. Wait for the confirmation that the Copilot has been successfully published to Teams.
 
+ > Note: The first response in Teams may take slightly longer due to initialization.
+
 ### Step 2: Open Microsoft Teams, Add the Copilot and Test
 
 1. Once Published, click on the **Microsoft Teams and Microsoft 365 Copilot** channel again, and click on the option, **see your agent in teams**.
@@ -66,4 +68,3 @@ This solution can transform recruitment operations across:
 - **Interview Preparation** - Question generation, role-specific assessments, level-based evaluations
 - **Hiring Manager Support** - Candidate reports, evaluation summaries, decision assistance
 - **Recruitment Analytics** - Candidate pipeline tracking, hiring metrics, time-to-hire optimization
-

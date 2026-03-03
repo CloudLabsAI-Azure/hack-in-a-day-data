@@ -1,7 +1,7 @@
 # Challenge 01: Create the Financial Risk Advisor Copilot  
 
 ## Introduction
-Finance teams spend significant time manually reviewing financial reports to identify risks and unusual trends.To simplify the process, Contoso Finance wants to implement an AI-powered Copilot that acts as a **Financial Risk Advisor**. This Copilot will later analyze reports, summarize trends, and flag anomalies for leadership review.
+Finance teams spend significant time manually reviewing financial reports to identify risks and unusual trends. To simplify the process, Contoso Finance wants to implement an AI-powered Copilot that acts as a **Financial Risk Advisor**. This Copilot will later analyze reports, summarize trends, and flag anomalies for leadership review.
 
 In this challenge, you will create the **Financial Risk Advisor Copilot** in Copilot Studio, serving as the foundation for the rest of the lab.
 
@@ -64,6 +64,8 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ## Additional Resources
 - [Copilot Studio Overview](https://learn.microsoft.com/microsoft-copilot-studio/overview)
-- [Create your first Copilot](https://learn.microsoft.com/microsoft-copilot-studio/authoring-create-copilot)
+- [Create your first Copilot](https://learn.microsoft.com/en-us/shows/mastering-copilot-studio/create-first-agent-copilot-studio)
 
 Click **Next** to continue to **Challenge 02: Upload Financial Knowledge Documents**.
+
+

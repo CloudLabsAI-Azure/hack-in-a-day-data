@@ -163,4 +163,5 @@ This transforms the Copilot into a practical assistant that supports the full re
 - https://learn.microsoft.com/en-us/power-automate/
 - https://learn.microsoft.com/microsoft-copilot-studio/variables
 
+---
 Click **Next** to continue to **Challenge 05: Publish the HR Interview Copilot to Microsoft Teams and Test the Full Workflow**.
