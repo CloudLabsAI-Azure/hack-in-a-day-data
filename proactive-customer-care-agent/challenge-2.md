@@ -118,7 +118,7 @@ In this challenge, you will activate your Freshdesk free trial, configure your a
 ## Additional Resources
 - [Freshdesk Documentation](https://support.freshdesk.com/)
 - [Freshdesk API Overview](https://developers.freshdesk.com/api/)
-- [Freshdesk Getting Started Guide](https://freshdesk.com/resources/getting-started)
+- [Freshdesk Getting Started Guide](https://www.freshworks.com/freshdesk/resources/ebooks/getting-started-with-freshdesk-guide/)
 
 Click **Next** at the bottom of the page to proceed to the next page.
 
