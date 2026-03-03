@@ -173,6 +173,6 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 - [Create your first copilot](https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-get-started)  
 - [Copilot Studio best practices](https://learn.microsoft.com/microsoft-copilot-studio/guidance/best-practices)
 
----
+Click **Next** at the bottom of the page to proceed to the next page.
 
-Now, click **Next** to continue to **Challenge 02: Upload Department Documents**.
+   ![](./media/auto-it-gt-gr-g4.png)

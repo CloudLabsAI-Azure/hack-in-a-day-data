@@ -301,6 +301,6 @@ Click the **Test** button to open the test panel on the right side.
 - [Call flows from topics](https://learn.microsoft.com/microsoft-copilot-studio/advanced-flow)
 - [Work with variables](https://learn.microsoft.com/microsoft-copilot-studio/authoring-variables)
 
----
+Click **Next** at the bottom of the page to proceed to the next page.
 
-Now, click **Next** to continue to **Challenge 05: Enable Citation Answers**.
+   ![](./media/auto-it-gt-gr-g7.png)

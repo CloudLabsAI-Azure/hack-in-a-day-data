@@ -71,6 +71,8 @@ Learner Support Contacts:
 - Email Support: cloudlabs-support@spektrasystems.com  
 - Live Chat Support: https://cloudlabs.ai/labs-support
 
-Now, click on the **Next** from lower right corner to move on next page.
+Click **Next** at the bottom of the page to proceed to the next page.
+
+   ![](./media/auto-it-gt-gr-g2.png)
 
 ## Happy Hacking!!
