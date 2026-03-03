@@ -6,6 +6,20 @@ These documents will later support resume-to-job matching, scoring, and intervie
 
 In this challenge, you will upload **Job Description PDFs and Resume PDFs** to the Copilot knowledge base.
 
+## Accessing the Datasets
+
+Please download and extract the datasets required for this challenge here:
+
+```
+https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads/hr-datasets.zip
+```
+
+## ⚠️ Important Data Notice
+
+- Do NOT upload real candidate resumes.
+- Use only lab-provided documents.
+- Resume data is sensitive HR information.
+
 ## Challenge Objectives
 - Add job descriptions and resumes as knowledge sources for the Copilot.
 - Ensure all documents are fully processed.
@@ -20,7 +34,7 @@ In this challenge, you will upload **Job Description PDFs and Resume PDFs** to t
 
 1. Choose **Upload files**.
 
-1. Upload the Job Description and Resume documents provided, which you downloaded and extracted earlier.
+1. Upload the **Job Description** and **Resume** documents provided, which you downloaded and extracted earlier.
 
 1. After uploading, verify each file shows the status **Ready**.
 
