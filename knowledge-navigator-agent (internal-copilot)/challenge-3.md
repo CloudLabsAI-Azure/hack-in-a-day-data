@@ -63,19 +63,19 @@ These flows will be created first so they're ready to use when you build convers
    
    - **Body:** Enter the following text and add dynamic content where indicated:
 
-   ```
-   Hello,
+      ```
+      Hello,
 
-   As requested, here is information about the document you requested.
+      As requested, here is information about the document you requested.
 
-   Document: [Click and add DocumentName dynamic content]
-   Description: [Click and add DocumentDescription dynamic content]
+      Document: [Click and add DocumentName dynamic content]
+      Description: [Click and add DocumentDescription dynamic content]
 
-   You can access this document through the Contoso SharePoint site or contact your department for more details.
+      You can access this document through the Contoso SharePoint site or contact your department for more details.
 
-   Best regards,
-   Internal Knowledge Navigator
-   ```
+      Best regards,
+      Internal Knowledge Navigator
+      ```
 
 1. Click **Publish** in the top-right corner.
 
