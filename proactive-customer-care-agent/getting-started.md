@@ -111,7 +111,11 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
 
    ![](./media/pro-activ-gg-g4.png)
 
-1. In the **Add an app from Microsoft Entra ID** pane, enter `https://cloudlabssandbox.onmicrosoft.com/cloudlabs.ai/` in the search box **(1)**, select the app from the results **(2)**, and then click **Add (3)**.
+1. In the **Add an app from Microsoft Entra ID** pane, enter the URL provided below in the search box **(1)**, select the app from the results **(2)**, and then click **Add (3)**.
+
+   ```
+   https://cloudlabssandbox.onmicrosoft.com/cloudlabs.ai/
+   ```
 
    ![](./media/pro-activ-gg-g5.png)
 
