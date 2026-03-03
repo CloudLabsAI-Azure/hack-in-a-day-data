@@ -64,7 +64,8 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 
 ## Additional Resources
 - [Copilot Studio Overview](https://learn.microsoft.com/microsoft-copilot-studio/overview)
-- [Create your first Copilot](https://learn.microsoft.com/microsoft-copilot-studio/authoring-create-copilot)
+- [Create your first Copilot](https://learn.microsoft.com/en-us/shows/mastering-copilot-studio/create-first-agent-copilot-studio)
 
 Click **Next** to continue to **Challenge 02: Upload Financial Knowledge Documents**.
+
 
