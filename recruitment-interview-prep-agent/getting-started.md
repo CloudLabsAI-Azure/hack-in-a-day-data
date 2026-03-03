@@ -92,6 +92,8 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
    > **Environment Foundation:** This step creates the foundational environment that will support your agents with company-specific data and knowledge sources.
 
    > **Note:** Environment provisioning may take 10–15 minutes to complete. Wait until the status shows as ready before proceeding.
+   
+   > **Note:** If you are still unable to see the newly created environment, please close the browser completely and open a new InPrivate window. Log in again and check whether the environment appears. If it is still not visible, try creating the environment one more time.
 
 1. In the power **platform admin center**, select **Manage** from left menu and click on the environment with the name, ODL_User <inject key="Deployment ID" enableCopy="false"></inject>'s Environment.
 
