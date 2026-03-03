@@ -136,8 +136,9 @@ The Copilot can now analyze financial documents and classify risk. In this chall
 
 ## Additional Resources  
 
-- https://learn.microsoft.com/microsoft-copilot-studio/actions  
-- https://learn.microsoft.com/microsoft-copilot-studio/create-plugin  
-- https://learn.microsoft.com/power-automate/flows-overview
+- https://learn.microsoft.com/power-automate/getting-started
+- https://learn.microsoft.com/power-automate/create-flow-overview
+- https://learn.microsoft.com/power-automate/flow-types
+
 
 Click **Next** to continue to **Challenge 05: Publish the Copilot to Microsoft Teams and Test the Full Workflow**.
