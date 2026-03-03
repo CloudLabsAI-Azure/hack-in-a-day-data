@@ -3,77 +3,37 @@
 ## Introduction
 The final step is to deploy your Proactive Customer Care Agent to Microsoft Teams, making it accessible to customers and support teams in your organization. Teams is the perfect channel for customer service interactions where support teams already collaborate and communicate.
 
-In this challenge, you will publish your agent, add it to Teams, test the complete customer experience, and share it with your organization.
+In this challenge, you will publish your agent, add it to Teams, and test the complete customer experience.
 
 ## Challenge Objectives
-- Publish your agent from Copilot Studio
-- Add the agent to Microsoft Teams
-- Test the complete customer journey in Teams
-- Configure availability and permissions
-- Share the agent with your organization
+- Publish the Agent to Microsoft Teams
+- Test the Agent in Microsoft Teams
 
 ## Steps to Complete
 
-### Step 1: Publish Your Agent
+### Step 1: Publish the Agent to Microsoft Teams
 
 1. In **Copilot Studio**, ensure you're in your **Customer Care Copilot Agent**.
 
-1. Click on **Publish**, in the channel section.
+1. Select **Channels**, and then choose **Teams and Microsoft 365 Copilot** under *Microsoft channels*.
 
-1. Review the pre-publish checklist:
-   - Topics are configured
-   - Knowledge sources are active
-   - Flows are connected
+1. Uncheck the **Make agent available in Microsoft 365 Copilot** checkbox, review the **Agent preview** section, and then click **Add channel**.
 
-1. Click **Publish** to deploy the latest version.
+1. After the channel is added successfully, select **See agent in Teams** under *Agent preview*.
 
-1. Wait for publishing to complete (this may take 1-2 minutes).
+1. If prompted with **Open Microsoft Teams?**, select **Cancel** to proceed.
 
-1. You'll see a success message when publishing is done.
+1. On the Teams welcome page, select **Use the web app instead** to continue in the browser.
 
-### Step 2: Configure Teams Channel
+1. In Microsoft Teams, select **Add** to install the **Customer Care Copilot** app.
 
-1. After publishing, click **Channels** in the left navigation.
+   > **Note:** If you do not see the **Add** option, return to the previous steps and reperform.
 
-1. Find **Microsoft Teams** in the available channels list.
+1. After the app is added successfully, select **Open** to launch **Customer Care Copilot**.
 
-1. Click on **Microsoft Teams** to expand options.
+### Step 2: Test the Agent in Microsoft Teams
 
-1. Click **Turn on Teams** or **Open** (if already enabled).
-
-1. You'll see options for Teams deployment:
-   - **For you and your teammates** - Adds to your Teams
-   - **For your organization** - Submits to Teams app catalog (requires admin approval)
-
-1. Select **Availability options** → **Show to everyone in my org**.
-
-1. Click **Submit for admin approval**.
-
-### Step 3: Add the Agent to Your Teams
-
-1. Open **Microsoft Teams** ( web) by navigating to the following URL:
-
-   ```
-   https://teams.microsoft.com
-   ```
-
-1. Sign in with your credentials:
-   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
-   - **Password:** <inject key="AzureAdUserPassword"></inject>
-
-1. In Teams, click **Apps** in the left sidebar.
-
-1. Search for **Customer Care Copilot Agent**.
-
-1. Click on your agent in the search results.
-
-1. Click **Add** to add it to your Teams.
-
-1. The agent chat will open automatically.
-
-### Step 4: Test Your Agent in Teams
-
-1. In the agent chat in Teams, type the following:
+1. In the **Customer Care Copilot** chat, type the following and send the message:
    ```
    Track my order
    ```
@@ -107,10 +67,8 @@ In this challenge, you will publish your agent, add it to Teams, test the comple
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help.
 
 ## Success Criteria
-- Agent successfully published from Copilot Studio
-- Agent deployed and accessible in Microsoft Teams
-- All 4 topics tested successfully in Teams
-- Tickets created through Teams appear in Freshdesk
+- Publish the Agent to Microsoft Teams
+- Test the Agent in Microsoft Teams
 
 ## Additional Resources
 - [Publish your copilot](https://learn.microsoft.com/microsoft-copilot-studio/publication-fundamentals-publish-channels)
