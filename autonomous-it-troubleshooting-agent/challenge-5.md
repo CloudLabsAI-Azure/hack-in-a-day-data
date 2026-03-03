@@ -58,7 +58,7 @@ In this challenge, you will test all 3 topics comprehensively, verify Freshdesk 
 
 ### Step 3: Test 2 IT Support Copilot
 
-1. Reset the conversation in the test pane.
+1. Click **New test session** to start a fresh conversation.
 
 1. Type the following:
    ```
@@ -86,7 +86,7 @@ In this challenge, you will test all 3 topics comprehensively, verify Freshdesk 
 
 Test if your agent can answer questions directly from the knowledge base without creating tickets.
 
-1. Reset the conversation.
+1. Click **New test session** to start a fresh conversation.
 
 1. Ask a general IT question by typing the following:
    ```

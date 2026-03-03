@@ -58,7 +58,7 @@ In this challenge, you will test all 4 topics comprehensively, verify CustomerSe
 
 ### Step 3: Test 2 Customer Care Copilot Agent
 
-1. Reset the conversation in the test pane.
+1. Click **New test session** to start a fresh conversation.
 
 1. Type the following:
    ```
@@ -86,7 +86,7 @@ In this challenge, you will test all 4 topics comprehensively, verify CustomerSe
 
 Test if your agent can answer questions directly from the knowledge base without creating tickets.
 
-1. Reset the conversation.
+1. Click **New test session** to start a fresh conversation.
 
 1. Ask a general customer service question by typing the following:
    ```

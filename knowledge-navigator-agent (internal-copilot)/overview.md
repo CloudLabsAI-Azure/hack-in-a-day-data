@@ -1,4 +1,4 @@
-# Knowledge Navigator Agent (Internal Copilot) – Hack in a Day
+# Knowledge Navigator Agent (Internal Copilot) - Hack in a Day
 
 Welcome to the Knowledge Navigator Agent (Internal Copilot) Hack in a Day! Today, you'll learn how to build an AI-powered internal knowledge assistant that helps employees search and access 40+ Contoso company documents across multiple departments. Through this hands-on experience, you'll create an agent with conversational topics, agent flows, and deploy it to Microsoft Teams.
 
@@ -10,7 +10,7 @@ As Contoso continues to grow, employees are finding it increasingly difficult to
 
 Your mission is to build a **Knowledge Navigator Agent** that helps employees quickly find information from Contoso's comprehensive document library including HR, Finance, IT, Procurement, Sales, Support, and Operations documents. Using Microsoft Copilot Studio's no-code platform, you'll create a conversational AI assistant that searches through company policies and procedures, provides accurate answers from the knowledge base, and can trigger automated actions.
 
-The agent will serve as a centralized knowledge hub for employees, capable of answering questions about HR handbooks, procurement policies, IT governance, expense reimbursements, sales playbooks, and more. You'll also create agent flows to email documents to employees and post requests to Microsoft Teams channels – all without writing a single line of code.
+The agent will serve as a centralized knowledge hub for employees, capable of answering questions about HR handbooks, procurement policies, IT governance, expense reimbursements, sales playbooks, and more. You'll also create agent flows to email documents to employees and post requests to Microsoft Teams channels - all without writing a single line of code.
 
 ## Key Tools / Services
 
@@ -40,11 +40,11 @@ By participating in this Hack in a Day, you will learn how to:
 
 This hack in a day adopts a challenge-based learning format, providing a hands-on experience through five progressive stages that build a complete Internal Knowledge Navigator Agent. Each challenge focuses on a key capability:
 
-- **Challenge 1: Create Agent and SharePoint Site** – Set up Copilot Studio agent, create SharePoint site, and upload 40+ Contoso documents
-- **Challenge 2: Connect SharePoint Knowledge Source** – Connect SharePoint to your agent, create Teams channel for requests, disable web search
-- **Challenge 3: Create Agent Flows for Actions** – Build two agent flows within Copilot Studio: Email Document to Employee and Send Request to Teams
+- **Challenge 1: Create Agent and SharePoint Site** - Set up Copilot Studio agent, create SharePoint site, and upload 40+ Contoso documents
+- **Challenge 2: Connect SharePoint Knowledge Source** - Connect SharePoint to your agent, create Teams channel for requests, disable web search
+- **Challenge 3: Create Agent Flows for Actions** - Build two agent flows within Copilot Studio: Email Document to Employee and Send Request to Teams
 - **Challenge 4: Create Topics Using Generative AI** - Use AI to generate 3 conversational topics and connect them to your agent flows
-- **Challenge 5: Publish Agent to Microsoft Teams** – Deploy your agent to Teams, test all topics and flows, configure availability
+- **Challenge 5: Publish Agent to Microsoft Teams** - Deploy your agent to Teams, test all topics and flows, configure availability
 
 Throughout each challenge, you'll:
 - Build practical, real-world AI agent capabilities using no-code tools
