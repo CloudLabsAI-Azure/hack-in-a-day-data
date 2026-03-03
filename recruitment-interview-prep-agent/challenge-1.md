@@ -65,6 +65,5 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 - [Copilot Studio Overview](https://learn.microsoft.com/microsoft-copilot-studio/overview)
 - [Create your first Copilot](https://learn.microsoft.com/microsoft-copilot-studio/authoring-create-copilot)
 
-Click **Next** to continue to **Challenge 02: Upload Job Descriptions and Resume Knowledge Documents**.
-
-
+---
+Click **Next** button to continue to **Challenge 02: Upload Job Descriptions and Resume Knowledge Documents**.
