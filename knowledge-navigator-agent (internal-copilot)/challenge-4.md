@@ -179,25 +179,7 @@ In this challenge, you will create 3 topics that help employees: Email Document,
 
 1. Ensure all topics are **enabled** (toggle should be on).
 
-### Step 7: Verify Flow Connections
-
-By now, you should have connected your topics to flows as part of Steps 3 and 4. Let's verify everything is set up correctly:
-
-1. Go to the **Topics** page and verify all 3 topics are created and enabled.
-
-1. Open **EmailDocument** topic and verify:
-   - It has an **Add a tool** node pointing to **Email Document Flow**
-   - All three flow inputs are mapped to topic variables
-   - There's a confirmation message after the flow action
-
-1. Open **SubmitRequest** topic and verify:
-   - It has an **Add a tool** node pointing to **Request Teams Flow**
-   - All four flow inputs are mapped correctly (especially RequestTypeText variable)
-   - There's a confirmation message after the flow action
-
-1. **NewEmployeeOnboarding** topic should NOT have any flow connections. It uses generative answers only.
-
-### Step 8: Test All Topics
+### Step 7: Test Topics
 
 Click the **Test** button to open the test panel on the right side.
 
@@ -211,11 +193,11 @@ Click the **Test** button to open the test panel on the right side.
 
 1. Verify generative answers are provided from the knowledge base without calling any flows.
 
-   > **Note:** The agent answers knowledge search queries automatically using the SharePoint knowledge source connected in Challenge 2. No dedicated topic is needed for this.
+   > **Note:** The agent answers knowledge search queries automatically using the SharePoint knowledge source connected in Challenge 2.
 
 #### Test EmailDocument:
 
-1. Reset the conversation (click the refresh icon).
+1. Click **New test session** to start a fresh conversation.
 
 1. Type: `Email me a document`
 
@@ -225,13 +207,11 @@ Click the **Test** button to open the test panel on the right side.
 
 1. Provide a brief description (e.g., "Need to review HR policies").
 
-1. Verify the flow runs and you receive the confirmation message.
-
 1. Check your email inbox (**<inject key="AzureAdUserEmail"></inject>**) to see if the email was delivered with document information.
 
 #### Test SubmitRequest:
 
-1. Reset the conversation.
+1. Click **New test session** to start a fresh conversation.
 
 1. Type: `Submit a request to the team`
 
@@ -249,28 +229,15 @@ Click the **Test** button to open the test panel on the right side.
 
 #### Test NewEmployeeOnboarding:
 
-1. Reset the conversation.
+1. Click **New test session** to start a fresh conversation.
 
 1. Type: `I'm a new employee and need help getting started`
 
-1. Ask questions like:
-  - "What benefits do I get?"
-  - "What's the onboarding process?"
-  - "Where can I find IT policies?"
+1. Pick from the options like:
+  - benefits
+  - Company Policies
 
 1. Verify the agent provides helpful answers from the knowledge base (HR Handbook, Onboarding Checklist, IT Governance Policy, etc.).
-
-### Step 9: Verify Flow Execution
-
-1. Go back to **Flows** in the left navigation.
-
-1. Click on each flow (**Email Document to Employee** and **Send Request to Teams**) to view run history.
-
-1. Verify that the flows were triggered by your topic tests.
-
-1. Check that the inputs were passed correctly from the topics.
-
-1. Ensure all steps in the flows completed successfully.
 
 ## Success Criteria
 - Created 3 topics using generative AI

@@ -53,7 +53,7 @@ Test all 3 topics you created in Challenge 4 and the agent's knowledge search ca
 
 #### Test EmailDocument Topic:
 
-1. Reset the conversation (click the refresh icon or start a new chat).
+1. Click **New test session** to start a fresh conversation.
 
 2. Type:
    ```
@@ -71,7 +71,7 @@ Test all 3 topics you created in Challenge 4 and the agent's knowledge search ca
 
 #### Test SubmitRequest Topic:
 
-1. Reset the conversation.
+1. Click **New test session** to start a fresh conversation.
 
 2. Type:
    ```
@@ -90,7 +90,7 @@ Test all 3 topics you created in Challenge 4 and the agent's knowledge search ca
 
 #### Test NewEmployeeOnboarding Topic:
 
-1. Reset the conversation.
+1. Click **New test session** to start a fresh conversation.
 
 2. Type:
    ```
