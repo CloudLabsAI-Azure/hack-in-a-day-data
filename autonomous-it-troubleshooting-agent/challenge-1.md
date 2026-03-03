@@ -1,9 +1,9 @@
-# Challenge 01: Create IT Support Copilot in Copilot Studio
+# Challenge 01: Create Autonomous IT Troubleshooting Agent in Copilot Studio
 
 ## Introduction
 IT departments frequently face overwhelming volumes of repetitive support requests password resets, VPN connectivity issues, hardware problems, and printer troubleshooting. Traditional manual helpdesk processes lead to delayed responses, inconsistent resolutions, and poor visibility into support trends.
 
-In this challenge, you will create an AI-powered IT Support Copilot using Microsoft Copilot Studio that will serve as your intelligent assistant to handle common IT support requests automatically.
+In this challenge, you will create an Autonomous IT Troubleshooting Agent using Microsoft Copilot Studio that will serve as your intelligent assistant to handle common IT support requests automatically.
 
 ## Challenge Objectives
 - Sign in to Microsoft Copilot Studio
