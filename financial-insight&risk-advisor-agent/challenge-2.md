@@ -29,8 +29,9 @@ In this challenge, you will upload **quarterly finance PDFs, cash flow reports, 
 - Copilot can now reference information from the uploaded financial documents.
 
 ## Additional Resources
-- [Use Knowledge Sources in Copilot Studio](https://learn.microsoft.com/microsoft-copilot-studio/knowledge)
-- [Supported Document Formats](https://learn.microsoft.com/microsoft-copilot-studio/knowledge#supported-file-formats)
+- [Use Knowledge Sources in Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-add-sharepoint)
+- [Supported Document Formats and Limits](https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-quotas#copilot-studio-web-app-sharepoint-limits)
 
 Click **Next** to continue to **Challenge 03: Build Financial Analysis Topics**.
+
 
