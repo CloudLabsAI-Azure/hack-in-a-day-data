@@ -51,8 +51,8 @@ Once published, you will add the Copilot to Teams and test the full end-to-end e
 - The final experience feels natural and conversational.
 
 ## Additional Resources
-- https://learn.microsoft.com/microsoft-copilot-studio/channels-teams
-- https://learn.microsoft.com/microsoft-teams/platform/apps-in-teams-overview
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/channels
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams
 
 ## Congratulations!
 
@@ -66,3 +66,4 @@ This solution can transform financial operations across:
 - **Investment Advisory** - Portfolio analysis, asset allocation, risk-return evaluation
 - **Corporate Finance** - Budget variance analysis, cash flow monitoring, financial planning
 - **Credit Operations** - Loan assessment, creditworthiness evaluation, default prediction
+

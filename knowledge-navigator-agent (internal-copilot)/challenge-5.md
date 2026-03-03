@@ -7,7 +7,7 @@ In this challenge, you will publish your agent, add it to Teams, and test the co
 
 ## Challenge Objectives
 - Publish the agent to Microsoft Teams
-- Test all topics and flows in Teams
+- Test topics and flows in Teams
 
 ## Steps to Complete
 
@@ -33,9 +33,9 @@ In this challenge, you will publish your agent, add it to Teams, and test the co
 
 ### Step 2: Test Your Agent in Teams
 
-Test all 4 topics you created in Challenge 4:
+Test all 3 topics you created in Challenge 4 and the agent's knowledge search capability:
 
-#### Test DocumentSearch Topic:
+#### Test Knowledge Search:
 
 1. In the agent chat in Teams, type:
    ```
@@ -44,16 +44,11 @@ Test all 4 topics you created in Challenge 4:
 
 2. Verify the agent searches the SharePoint knowledge base and provides relevant information.
 
-3. Try another query:
-   ```
-   What are the expense reimbursement policies?
-   ```
-
-4. Verify generative answers are provided from the knowledge base.
+3. Verify generative answers are provided from the knowledge base.
 
 #### Test EmailDocument Topic:
 
-1. Reset the conversation (click the refresh icon or start a new chat).
+1. Click **New test session** to start a fresh conversation.
 
 2. Type:
    ```
@@ -71,7 +66,7 @@ Test all 4 topics you created in Challenge 4:
 
 #### Test SubmitRequest Topic:
 
-1. Reset the conversation.
+1. Click **New test session** to start a fresh conversation.
 
 2. Type:
    ```
@@ -88,22 +83,6 @@ Test all 4 topics you created in Challenge 4:
 
 5. Check your Microsoft Teams **Document Request** channel to see if the request was posted.
 
-#### Test NewEmployeeOnboarding Topic:
-
-1. Reset the conversation.
-
-2. Type:
-   ```
-   I'm a new employee and need help getting started
-   ```
-
-3. Ask questions like:
-   - "What benefits do I get?"
-   - "What's the onboarding process?"
-   - "Where can I find IT policies?"
-
-4. Verify the agent provides helpful answers from the knowledge base.
-
 <validation step="09e05d19-df23-42fd-8688-4262e3dcdb95" />
  
 > **Congratulations** on completing the Challenge! Now, it's time to validate it. Here are the steps:
@@ -113,7 +92,7 @@ Test all 4 topics you created in Challenge 4:
 
 ## Success Criteria
 - Publish the agent to Microsoft Teams
-- Test all topics and flows in Teams
+- Test topics and flows in Teams
 
 ## Additional Resources
 - [Publish your agent](https://learn.microsoft.com/microsoft-copilot-studio/publication-fundamentals-publish-channels)  

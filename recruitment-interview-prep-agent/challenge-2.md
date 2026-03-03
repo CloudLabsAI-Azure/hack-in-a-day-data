@@ -45,9 +45,10 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 - The Copilot can now reference information from the uploaded hiring documents to evaluate candidates and generate interview questions.
 
 ## Additional Resources
-- https://learn.microsoft.com/microsoft-copilot-studio/knowledge
-- https://learn.microsoft.com/microsoft-copilot-studio/knowledge#supported-file-formats
+- [Add Knowledge to existing Agent](https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-add-existing-copilot)
+- [Microsoft Copilot Studio Knowledge Sources](https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-add-file-upload)
 
 ---
 Click **Next** to continue to **Challenge 03: Build Interview Topics**.
+
 
