@@ -48,4 +48,6 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 - https://learn.microsoft.com/microsoft-copilot-studio/knowledge
 - https://learn.microsoft.com/microsoft-copilot-studio/knowledge#supported-file-formats
 
+---
 Click **Next** to continue to **Challenge 03: Build Interview Topics**.
+
