@@ -124,7 +124,6 @@ https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges/archive/refs/heads
 ## Additional Resources
 - [Microsoft Copilot Studio Overview](https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-what-is-copilot-studio)  
 - [Create your first copilot](https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-get-started)  
-- [Copilot Studio best practices](https://learn.microsoft.com/microsoft-copilot-studio/guidance/best-practices)
 
 Click **Next** at the bottom of the page to proceed to the next page.
 

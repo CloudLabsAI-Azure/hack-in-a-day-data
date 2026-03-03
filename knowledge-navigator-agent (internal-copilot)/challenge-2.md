@@ -7,10 +7,7 @@ In this challenge, you'll connect the SharePoint site to Copilot Studio, verify 
 
 ## Challenge Objectives
 - Connect the SharePoint site as a knowledge source in Copilot Studio
-- Verify all documents are successfully indexed
 - Configure knowledge source settings
-- Test basic knowledge retrieval across different document types
-- Ensure the agent responds using Contoso company documents
 
 ## Prerequisites
 
@@ -61,34 +58,13 @@ Before starting this challenge, ensure you have:
 
 1. You should see the SharePoint site listed as a knowledge source with the name: **contoso-documents-<inject key="DeploymentID"></inject>**
 
-1. The status should show as **Processing** or **Syncing** initially.
-
-1. Wait for the status to change to **Active** or **Ready** (this may take 3-10 minutes for 40+ documents).
+1. Wait for the status to change to **Ready**.
 
    > **Note:** The SharePoint connector will automatically index all documents in the Documents library. You don't need to upload individual files.
 
-1. If the status shows **Failed** or **Error**, try the following:
-   - Verify the SharePoint site URL is correct
-   - Check that you have access to the SharePoint site
-   - Remove and re-add the knowledge source
+1. If the status shows **Failed** or **Error**, verify the SharePoint site URL is correct.
 
-### Step 3: Verify Knowledge Source Indexing
-
-1. In the **Knowledge** section, click on your SharePoint knowledge source to view details.
-
-1. You should see information about:
-   - **Source type:** SharePoint
-   - **Status:** Active (or Ready)
-   - **Documents indexed:** Number of documents found and indexed
-   - **Last synced:** Timestamp of last indexing
-
-1. Verify that the document count is approximately 40+ documents.
-
-   > **Note:** The SharePoint connector automatically indexes all files in the Documents library. You'll see a single SharePoint entry, not individual files listed.
-
-1. If indexing is still in progress, wait a few more minutes and refresh the page.
-
-### Step 4: Create a Teams Channel for Document Requests
+### Step 3: Create a Teams Channel for Document Requests
 
 Now you'll create a Microsoft Teams channel where employee requests will be posted by the agent flows you'll create in later challenges.
 
@@ -98,25 +74,19 @@ Now you'll create a Microsoft Teams channel where employee requests will be post
    https://teams.microsoft.com/v2/
    ```
 
-1. Sign in with your Microsoft 365 credentials if prompted.
+1. Once Teams loads, look for the **Chat** section in the left navigation.
 
-1. Once Teams loads, look for the **Teams** section in the left navigation.
-
-1. Click the **...** (More options) next to any available team, then select **Add channel**.
-
-   > **Note:** If you don't see any teams, you may need to join or create a team first. Use any available team in your tenant.
+1. Click the **More options** next to **Chat** section, then select **New channel**.
 
 1. In the **Create a channel** dialog, enter the following:
 
-   - **Channel name:** `Document Request`
-   
+   - **Add the channel to a team:**  Select `CloudLabs Sandbox`
+   - **Channel name:** **Document Request-<inject key="DeploymentID"></inject>**
    - **Description:** 
      ```
      This channel is used to receive and manage employee document requests and support inquiries submitted through the Internal Knowledge Navigator agent.
      ```
-
-   - **Channel type:** Select **Standard**
-
+   - **Channel type:** Select **Private**
    - **Layout:** Select **Threads**
 
 1. Click **Create** to create the channel.
@@ -125,29 +95,13 @@ Now you'll create a Microsoft Teams channel where employee requests will be post
 
    > **Important:** Save the team name and channel name for later use when configuring agent flows in Challenge 3.
 
-### Step 5: Disable Web Search
-
-1. Go back to **Microsoft Copilot Studio** in your browser.
-
-1. Navigate to the **Knowledge** section in the left navigation pane.
-
-1. Scroll down to the **Web Search** area.
-
-1. Ensure that **Web Search** is set to **Disabled**.
-
-   > **Important:** This ensures the agent only uses information from your Contoso SharePoint documents and doesn't search the public web for answers.
-
 ## Success Criteria
 - SharePoint knowledge source is connected to Copilot Studio
-- SharePoint knowledge source shows **Active** or **Ready** status
-- Knowledge source has indexed 40+ Contoso documents
 - Microsoft Teams channel "Document Request" created successfully
-- Web Search is disabled for the agent
 
 ## Additional Resources
 - [Add knowledge sources to your copilot](https://learn.microsoft.com/microsoft-copilot-studio/nlu-boost-conversations)  
 - [Generative answers with uploaded files](https://learn.microsoft.com/microsoft-copilot-studio/nlu-boost-node)  
-- [Manage knowledge sources](https://learn.microsoft.com/microsoft-copilot-studio/knowledge-manage-sources)
 
 Click **Next** at the bottom of the page to proceed to the next page.
 
