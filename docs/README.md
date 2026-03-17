@@ -21,19 +21,14 @@ A hands-on workshop that guides you through building intelligent apps and AI age
 > **Duration**: 4-5 hours  
 > **Focus**: Hands-on exercises, interactive notebooks, practical examples, end-to-end project
 
-## 🎥 Workshop Overview Video
-
-Watch our overview video to get a comprehensive understanding of the workshop:
-[![Azure AI Foundry Workshop Overview](https://img.youtube.com/vi/0bGLgmZJ6DE/0.jpg)](https://youtu.be/0bGLgmZJ6DE)
-
 ## 📸 Visuals
 
 ### Sections Overview
-<img src="./3-ai-native-e2e-sample/assets/sections.png" width="70%" />
+![Sections](sections.png)
 *Figure 1: Overview of different sections in this workshop.*
 
 ### End-to-End Sample UI
-<img src="./3-ai-native-e2e-sample/assets/ui.png" width="70%" />
+![e2esample](./3-ai-native-e2e-sample/assets/ui.png)
 *Figure 2: User interface of the end-to-end AI native sample project.*
 
 ---
