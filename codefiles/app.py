@@ -218,6 +218,80 @@ with st.sidebar:
         st.success("Credentials reset. Run az login in your terminal, then click Analyze.")
 
 # ---------------------------------------------------------------------------
+# Anomaly synthesis helper — fills anomaly list from metrics/remediation
+# when the anomaly detection agent returns an empty list despite issues.
+# ---------------------------------------------------------------------------
+def _ensure_anomalies(parsed_result):
+    """If anomaly agent returned no anomalies but metrics/remediation show issues, synthesize entries."""
+    anomalies_data = parsed_result.get("anomalies") or {}
+    anomaly_list = anomalies_data.get("anomalies", [])
+    # Filter out non-dict items (agent may return strings instead of objects)
+    anomaly_list = [a for a in anomaly_list if isinstance(a, dict)]
+    anomalies_data["anomalies"] = anomaly_list
+    if anomaly_list:
+        return  # Agent already provided anomalies — nothing to do
+
+    metrics = parsed_result.get("metrics_analysis") or {}
+    remediation = parsed_result.get("remediation") or {}
+    overall = (metrics.get("overall_health") or {}).get("status", "").upper()
+    actions = remediation.get("remediation_actions", [])
+
+    if overall not in ("CRITICAL", "WARNING") and not actions:
+        return  # Truly healthy — leave anomalies empty
+
+    synth = []
+    for cat_key, cat_label in [
+        ("cpu_analysis", "CPU"), ("memory_analysis", "Memory"),
+        ("disk_analysis", "Disk"), ("network_analysis", "Network"),
+    ]:
+        cat_data = metrics.get(cat_key, {})
+        if isinstance(cat_data, list):
+            cat_data = cat_data[0] if cat_data else {}
+        cat_status = (cat_data.get("status") or "").upper()
+        if cat_status in ("CRITICAL", "WARNING"):
+            synth.append({
+                "severity": cat_status,
+                "category": cat_label,
+                "title": f"{cat_label} {cat_status.title()}",
+                "description": cat_data.get("summary", f"{cat_label} is in {cat_status} state"),
+                "evidence": f"Status: {cat_status}, Average: {cat_data.get('average_percent', cat_data.get('average_available_mb', 'N/A'))}",
+                "impact": next(
+                    (a.get("expected_outcome", "") for a in actions
+                     if cat_label.lower() in (a.get("action") or "").lower()
+                     or cat_label.lower() in (a.get("category") or "").lower()),
+                    f"{cat_label} issue requires attention"
+                ),
+            })
+
+    # Last resort: create from remediation actions themselves
+    if not synth and actions:
+        for act in actions:
+            prio = (act.get("priority") or "").lower()
+            sev = "CRITICAL" if prio == "immediate" else "WARNING" if prio == "short-term" else "INFO"
+            synth.append({
+                "severity": sev,
+                "category": act.get("category", "general"),
+                "title": act.get("action", "Detected Issue"),
+                "description": act.get("implementation", ""),
+                "evidence": "Identified by AI remediation analysis",
+                "impact": act.get("expected_outcome", ""),
+            })
+
+    if synth:
+        if not parsed_result.get("anomalies"):
+            parsed_result["anomalies"] = {}
+        parsed_result["anomalies"]["anomalies"] = synth
+        crit = sum(1 for a in synth if a["severity"] == "CRITICAL")
+        warn = sum(1 for a in synth if a["severity"] == "WARNING")
+        info_c = sum(1 for a in synth if a["severity"] == "INFO")
+        parsed_result["anomalies"]["anomaly_summary"] = {
+            "critical": crit, "warning": warn, "info": info_c,
+            "total_anomalies": len(synth),
+            "overall_status": "CRITICAL" if crit else "WARNING" if warn else "INFO",
+        }
+
+
+# ---------------------------------------------------------------------------
 # Tabs
 # ---------------------------------------------------------------------------
 tab_analyze, tab_metrics, tab_anomalies, tab_remediation, tab_alerts = st.tabs(
@@ -292,6 +366,10 @@ with tab_analyze:
                 if response and not response.startswith("Error") and not response.startswith("Agent run failed"):
                     st.session_state["last_response"] = response
                     parsed_result = parse_agent_response(response)
+
+                    # --- Ensure anomalies exist when metrics indicate issues ---
+                    _ensure_anomalies(parsed_result)
+
                     st.session_state["last_parsed"] = parsed_result
                     st.session_state["last_cpu_df"] = cpu_df
                     st.session_state["last_memory_df"] = memory_df
@@ -475,6 +553,15 @@ with tab_anomalies:
     if anomalies:
         summary = anomalies.get("anomaly_summary", {})
 
+        # Recalculate counts from the actual anomaly list if summary is empty/zero
+        anomaly_list = anomalies.get("anomalies", [])
+
+        if anomaly_list and not summary.get("total_anomalies"):
+            crit = sum(1 for a in anomaly_list if a.get("severity", "").upper() == "CRITICAL")
+            warn = sum(1 for a in anomaly_list if a.get("severity", "").upper() == "WARNING")
+            info = sum(1 for a in anomaly_list if a.get("severity", "").upper() == "INFO")
+            summary = {"critical": crit, "warning": warn, "info": info, "total_anomalies": len(anomaly_list)}
+
         cols = st.columns(4)
         with cols[0]:
             st.markdown(
@@ -529,20 +616,38 @@ with tab_anomalies:
         st.markdown("---")
 
         # Anomaly list
-        anomaly_list = anomalies.get("anomalies", [])
+        anomaly_list = [a for a in anomalies.get("anomalies", []) if isinstance(a, dict)]
         if anomaly_list:
             for a in anomaly_list:
                 sev = a.get("severity", "INFO").upper()
                 sev_css = "critical" if sev == "CRITICAL" else "high" if sev == "WARNING" else "medium"
                 badge_css = f"badge-{sev_css}"
+
+                # Extract fields with fallbacks for different key names the LLM may use
+                a_title = (a.get("title") or a.get("name") or a.get("anomaly_type")
+                           or a.get("type") or a.get("anomaly") or "Anomaly")
+                a_desc = (a.get("description") or a.get("details") or a.get("detail")
+                          or a.get("summary") or a.get("message") or "")
+                a_evidence = (a.get("evidence") or a.get("data") or a.get("metric_value")
+                              or a.get("observed_value") or a.get("current_value") or "")
+                a_impact = (a.get("impact") or a.get("risk") or a.get("consequence")
+                            or a.get("recommendation") or "")
+
+                # If still empty, build from all available keys in the anomaly dict
+                if not a_desc:
+                    skip_keys = {"severity", "category", "id", "first_detected"}
+                    parts = [f"{k}: {v}" for k, v in a.items()
+                             if k not in skip_keys and v and k != "severity"]
+                    a_desc = "; ".join(parts) if parts else ""
+
                 st.markdown(
                     f"""<div class="metric-card sev-{sev_css}" style="margin-bottom: 0.8rem;">
                     <span class="badge {badge_css}">{sev}</span>
-                    &nbsp;<strong>{a.get("title", "Anomaly")}</strong>
+                    &nbsp;<strong>{a_title}</strong>
                     <span class="badge badge-medium">{a.get("category", "")}</span>
-                    <p style="margin-top:0.5rem;">{a.get("description", "")}</p>
-                    <p><em>Evidence:</em> {a.get("evidence", "N/A")}</p>
-                    <p><em>Impact:</em> {a.get("impact", "N/A")}</p>
+                    <p style="margin-top:0.5rem;">{a_desc}</p>
+                    <p><em>Evidence:</em> {a_evidence or "N/A"}</p>
+                    <p><em>Impact:</em> {a_impact or "N/A"}</p>
                     </div>""",
                     unsafe_allow_html=True,
                 )

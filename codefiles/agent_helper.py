@@ -117,10 +117,10 @@ def run_agent_analysis(endpoint, agent_id, prompt):
             error_msg = run.last_error.message if run.last_error else "Unknown error"
             return f"Agent run failed: {error_msg}"
 
-        # Collect ALL assistant message texts.  With connected agents the
-        # intermediate responses may appear as separate messages.  We pick
-        # the longest one (the final compiled response) so we don't miss
-        # any section.
+        # Collect ALL assistant message texts and join them.
+        # With connected agents each agent may add its own message.
+        # We concatenate everything so the parser can find JSON blocks
+        # from every agent response.
         messages = client.messages.list(thread_id=thread.id)
         assistant_texts = []
         for msg in messages:
@@ -132,8 +132,8 @@ def run_agent_analysis(endpoint, agent_id, prompt):
         if not assistant_texts:
             return "No response from agent."
 
-        # Return the longest assistant message (the final compiled output).
-        return max(assistant_texts, key=len)
+        # Join all assistant messages so the parser sees everything.
+        return "\n\n---\n\n".join(assistant_texts)
     except Exception as e:
         return f"Error communicating with agent: {str(e)}"
 
@@ -181,18 +181,50 @@ def _categorize(data, result):
     if not isinstance(data, dict):
         return
 
-    # Unwrap known wrapper keys so their nested contents are at top level.
-    # The LLM may use various key names for each section.
+    # --- Step 1: Check for combined top-level structure first. ---
+    # The pipeline may return {"metrics_analysis": {...}, "anomaly_detection": {...}, "remediation": {...}}
+    # Handle this explicitly before any unwrapping.
+    combined_metric_keys = ("metrics_analysis", "metric_analysis")
+    combined_anomaly_keys = ("anomaly_detection", "anomaly_analysis",
+                             "anomaly_results", "detected_anomalies",
+                             "anomaly_detection_results")
+    combined_remed_keys = ("remediation", "remediation_recommendations",
+                           "remediation_plan")
+
+    found_m = next((k for k in combined_metric_keys if k in data and isinstance(data[k], dict)), None)
+    found_a = next((k for k in combined_anomaly_keys if k in data and isinstance(data[k], dict)), None)
+    found_r = next((k for k in combined_remed_keys if k in data and isinstance(data[k], dict)), None)
+
+    # If we found at least 2 of the 3 top-level sections, split them directly.
+    found_count = sum(1 for f in (found_m, found_a, found_r) if f)
+    if found_count >= 2:
+        if found_m and not result["metrics_analysis"]:
+            result["metrics_analysis"] = data[found_m]
+        if found_a and not result["anomalies"]:
+            result["anomalies"] = data[found_a]
+        if found_r and not result["remediation"]:
+            result["remediation"] = data[found_r]
+        return
+
+    # --- Step 2: Unwrap if it's a single-section wrapper. ---
     wrapper_keys = (
         "metrics_analysis", "metric_analysis",
         "anomaly_detection", "anomaly_analysis", "anomaly_results",
         "anomaly_detection_results", "detected_anomalies",
-        "remediation_recommendations", "remediation", "remediation_plan",
+        "remediation_recommendations", "remediation_plan",
     )
     for wk in wrapper_keys:
         if wk in data and isinstance(data[wk], dict):
             nested = data.pop(wk)
             data.update(nested)
+
+    # Also unwrap "remediation" ONLY if it looks like a wrapper
+    # (i.e. it contains remediation sub-keys, not the whole section)
+    if "remediation" in data and isinstance(data["remediation"], dict):
+        inner = data["remediation"]
+        if any(k in inner for k in ("remediation_actions", "remediation_summary")):
+            data.pop("remediation")
+            data.update(inner)
 
     metrics_keys = {
         "cpu_analysis", "memory_analysis", "disk_analysis",
