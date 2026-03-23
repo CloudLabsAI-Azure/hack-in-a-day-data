@@ -1,0 +1,23 @@
+# Streamlit Web Framework
+streamlit==1.30.0
+
+# Azure AI Agents SDK
+azure-ai-agents==1.1.0
+
+# Azure AI Projects SDK
+azure-ai-projects==2.0.0b3
+
+# Azure Monitor Query SDK
+azure-monitor-query>=1.4.0
+
+# Azure Event Grid SDK
+azure-eventgrid>=4.18.0
+
+# Azure Identity for AzureCliCredential
+azure-identity
+
+# Environment Configuration
+python-dotenv==1.0.0
+
+# Data processing
+pandas
