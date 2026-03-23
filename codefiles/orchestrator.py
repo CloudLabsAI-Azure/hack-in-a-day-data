@@ -33,6 +33,7 @@ class MultiAgentOrchestrator:
                 deployment_name=deployment,
                 endpoint=endpoint,
                 api_key=api_key,
+                api_version=os.getenv("MICROSOFT_FOUNDRY_VERSION")
             )
         )
 
