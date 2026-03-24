@@ -23,27 +23,35 @@ class EventGridHelper:
         Publish a security risk alert to Event Grid.
         Only publishes CRITICAL and HIGH severity risks.
         """
-        severity = risk_data.get("severity", "LOW")
+        severity = risk_data.get("severity", "LOW").upper()
         if severity not in ["CRITICAL", "HIGH"]:
             return False
 
         try:
+            # Build affected_data as a list to match Logic App Parse JSON schema
+            affected_data_raw = risk_data.get("affected_data", risk_data.get("affected_resource", risk_data.get("affected_data_classification", "")))
+            if isinstance(affected_data_raw, str):
+                affected_data_list = [affected_data_raw] if affected_data_raw else []
+            elif isinstance(affected_data_raw, list):
+                affected_data_list = affected_data_raw
+            else:
+                affected_data_list = []
+
             event = EventGridEvent(
                 id=str(uuid.uuid4()),
                 event_type="DataSecurity.RiskDetected",
                 subject=f"/security/risks/{risk_data.get('risk_id', 'unknown')}",
                 data={
-                    "risk_id": risk_data.get("risk_id", ""),
+                    "alert_id": f"ALERT-{uuid.uuid4().hex[:8].upper()}",
                     "severity": severity,
-                    "category": risk_data.get("category", ""),
-                    "description": risk_data.get("description", ""),
-                    "affected_resource": risk_data.get("affected_resource", ""),
-                    "affected_data_classification": risk_data.get("affected_data_classification", ""),
-                    "regulation_violated": risk_data.get("regulation_violated", []),
-                    "recommended_action": risk_data.get("recommended_action", ""),
-                    "requires_human_approval": risk_data.get("requires_human_approval", True),
-                    "detected_at": datetime.utcnow().isoformat(),
-                    "source": "AI-Data-Security-Agent"
+                    "risk_id": risk_data.get("risk_id", ""),
+                    "description": risk_data.get("description", risk_data.get("issue", "")),
+                    "user": risk_data.get("user", ""),
+                    "role": risk_data.get("role", ""),
+                    "affected_data": affected_data_list,
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "requires_approval": risk_data.get("requires_approval", risk_data.get("requires_human_approval", True)),
+                    "scan_id": risk_data.get("scan_id", "")
                 },
                 data_version="1.0"
             )

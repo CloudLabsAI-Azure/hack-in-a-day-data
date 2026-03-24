@@ -1,15 +1,15 @@
 # AI-Powered Data Security & Compliance Agent
 
-Streamlit dashboard for autonomous data security scanning, risk detection, and compliance reporting.
+Streamlit dashboard for data security scanning, risk detection, and compliance reporting.
 
 ## Features
 
-- **Sensitive Data Classification** — Scans schemas and sample data to identify PII, PHI, PCI, and confidential information
-- **Risk Detection** — Cross-references access policies and activity logs to find over-privilege, anomalies, and compliance gaps
-- **Compliance Remediation** — Generates fix plans mapped to GDPR, HIPAA, PCI-DSS with approval workflows
-- **Event-Driven Alerts** — Publishes critical risks to Azure Event Grid, processed by Logic App
-- **Scan History** — Stores all results in Cosmos DB for audit trail
-- **Fast / Full Scan** — Choose between quick sample scan or comprehensive analysis
+- **Sensitive Data Classification** - Scans schemas and sample data to identify PII, PHI, PCI, and confidential information
+- **Risk Detection** - Cross-references access policies and activity logs to find over-privilege, anomalies, and compliance gaps
+- **Compliance Remediation** - Generates fix plans mapped to GDPR, HIPAA, PCI-DSS with approval workflows
+- **Event-Driven Alerts** - Publishes critical risks to Azure Event Grid, processed by Logic App
+- **Scan History** - Stores all results in Cosmos DB for audit trail
+- **Fast / Full Scan** - Choose between quick sample scan or comprehensive analysis
 
 ## Quick Start
 
@@ -40,8 +40,8 @@ streamlit run app.py
 
 | Variable | Source | Required |
 |---|---|---|
-| `AGENT_API_ENDPOINT` | AI Foundry Portal > Project > Overview | Yes |
-| `AGENT_ID` | AI Foundry Portal > Agents > Setup panel | Yes |
+| `AGENT_API_ENDPOINT` | Microsoft Foundry Portal > Project > Overview | Yes |
+| `AGENT_ID` | Microsoft Foundry Portal > Agents > Setup panel | Yes |
 | `COSMOS_ENDPOINT` | Azure Portal > Cosmos DB > Keys | Yes |
 | `COSMOS_KEY` | Azure Portal > Cosmos DB > Keys | Yes |
 | `STORAGE_ACCOUNT_NAME` | Azure Portal > Storage Account | Yes |
