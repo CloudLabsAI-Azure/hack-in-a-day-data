@@ -6,55 +6,51 @@ Welcome to Hack in a Day: Call Center Data Analysis using Azure AI Services and 
 
 Once you're ready to dive in, your virtual machine and challenge guide will be right at your fingertips within your web browser.
 
-![](./images/vm00100.png)
+![](./media/gs1.png)
 
 ### Exploring Your Challenge Resources
 
 To get a better understanding of your challenge resources and credentials, navigate to the Environment tab.
 
-![](./images/env01.png)
+![](./media/gs-leave-2.png)
 
 ### Utilizing the Split Window Feature
 
-For convenience, you can open the challenge guide in a separate window by selecting the Split Window button from the top right corner.
+For convenience, you can open the challenge guide in a separate window by selecting the Split Window button from the Top right corner.
 
-![](./images/splitwin01.png)
+![](./media/gs-leave-3.png)
 
 ### Managing Your Virtual Machine
 
 Feel free to start, stop, or restart your virtual machine as needed from the Resources tab. Your experience is in your hands!
 
-![](./images/RT1.png)
+![](./media/gs-leave-4.png)
 
-### Lab Guide Zoom In / Zoom Out
+> **Note:** If the VM is not in use, please **deallocate** it to avoid unnecessary resource consumption.
 
-Adjust the zoom level using the **A-: 100%** icon located next to the timer.
+## Let's Get Started with Intelligent Content Processing
 
-![](./images/zoominout1.png)
+1. In the JumpVM, click on the **Azure Portal** browser shortcut which is created on the desktop.
 
-## Let's Get Started with Azure Portal
+   ![](./media/gs-up1.png)
 
-1. On the virtual machine, click the **Azure Portal** icon:
+1. On the **Sign into Microsoft Azure** tab, you will see the login screen. Enter the provided email or username, and click **Next** to proceed.
 
-    ![](./images/vm101.png)
+   - Email/Username: <inject key="AzureAdUserEmail" />
 
-1. On the **Sign in to Microsoft Azure** page, enter:
+     ![](./media/gs-lab3-g2.png)
 
-   - **Email/Username:** <inject key="AzureAdUserEmail" enableCopy="true"/>
+1. Now, enter the following password and click on **Sign in**.
 
-       ![](./images/sign1.png)
+   - Password: <inject key="AzureAdUserPassword" />
 
-1. Enter the password:
+     ![](./media/gs-lab3-g3.png)
 
-   - **Password:** <inject key="AzureAdUserPassword" enableCopy="true"/>
+     >**Note:** If you see the Action Required dialog box, then select the Ask Later option.
+     
+1. If you see the pop-up **Stay Signed in?**, click No.
 
-      ![](./images/tpwrd.png)
-
-1. Select **No** when prompted to stay signed in.
-
-   ![](./images/sign001.png)
-
-1. You are now ready to start the challenges.
+   ![](./media/gs-4.png)
 
 ## Support Contact
 
