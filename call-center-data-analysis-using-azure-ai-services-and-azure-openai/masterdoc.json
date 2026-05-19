@@ -2,21 +2,28 @@
     {
         "Name": "Lab : Call Center data analysis using Azure AI services and Azure OpenAI",
         "Language": "English",
-        "BaseURL": "https://github.com/CloudLabsAI-Azure/hack-in-a-day-challenges",
+        "BaseURL": "https://github.com/CloudLabsAI-Azure/hack-in-a-day-data",
         "Files": [
             {
-                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/hack-in-a-day-challenges/refs/heads/main/call-center-data-analysis-using-azure-ai-services-and-azure-openai/overview.md",
+                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/hack-in-a-day-data/refs/heads/main/call-center-data-analysis-using-azure-ai-services-and-azure-openai/overview.md",
                 "Order": 1
             },
             {
-                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/hack-in-a-day-challenges/refs/heads/main/call-center-data-analysis-using-azure-ai-services-and-azure-openai/getting-started.md",
+                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/hack-in-a-day-data/refs/heads/main/call-center-data-analysis-using-azure-ai-services-and-azure-openai/getting-started.md",
                 "Order": 2
             },
             {
-                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/hack-in-a-day-challenges/refs/heads/main/call-center-data-analysis-using-azure-ai-services-and-azure-openai/challenge-based.md",
+                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/hack-in-a-day-data/refs/heads/main/call-center-data-analysis-using-azure-ai-services-and-azure-openai/challenge-1.md",
                 "Order": 3
+            },
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/hack-in-a-day-data/refs/heads/main/call-center-data-analysis-using-azure-ai-services-and-azure-openai/challenge-2.md",
+                "Order": 4
+            },
+            {
+                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/hack-in-a-day-data/refs/heads/main/call-center-data-analysis-using-azure-ai-services-and-azure-openai/challenge-3.md",
+                "Order": 5
             }
-
         ]
     }
 ]

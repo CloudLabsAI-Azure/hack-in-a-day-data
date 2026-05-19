@@ -1,57 +1,68 @@
-## Getting Started with Challenge
+## Getting Started with Your Lab
 
-Welcome to Hack in a Day: Call Center Data Analysis using Azure AI Services and Azure OpenAI challenge! We've prepared a seamless environment for you to explore and learn. Let's begin by making the most of this experience.
+Welcome to Hack in a Day: Call Center Data Analysis using Azure AI Services and Azure OpenAI! We've prepared a complete environment with all required Azure resources and lab files ready for you. Let's begin by setting up your workspace.
 
 ### Accessing Your Challenge Environment
 
 Once you're ready to dive in, your virtual machine and challenge guide will be right at your fingertips within your web browser.
 
-![](./media/gs1.png)
+![](./images/vm00100.png)
 
 ### Exploring Your Challenge Resources
 
 To get a better understanding of your challenge resources and credentials, navigate to the Environment tab.
 
-![](./media/gs-leave-2.png)
+![](./images/env01.png)
 
 ### Utilizing the Split Window Feature
 
-For convenience, you can open the challenge guide in a separate window by selecting the Split Window button from the Top right corner
+For convenience, you can open the challenge guide in a separate window by selecting the Split Window button from the top right corner.
 
-![](./media/gs-leave-3.png)
+![](./images/splitwin01.png)
 
 ### Managing Your Virtual Machine
 
 Feel free to start, stop, or restart your virtual machine as needed from the Resources tab. Your experience is in your hands!
 
-![](./media/gs-leave-4.png)
+![](./images/RT1.png)
 
-## Let's Get Started with Azure AI Services and Azure OpenAI
+### Lab Guide Zoom In / Zoom Out
 
-1. In the JumpVM, click on **Azure Portal** shortcut of Microsoft Edge browser which is created on desktop.
+Adjust the zoom level using the **A-: 100%** icon located next to the timer.
 
-   ![](./media/gs-up1.png)
+![](./images/zoominout1.png)
 
-1. On the **Sign into Microsoft** tab, you will see the login screen. Enter the provided email or username, and click **Next** to proceed.
+## Let's Get Started with Azure Portal
 
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+1. On the virtual machine, click the **Azure Portal** icon:
 
-     ![](./media/gs-lab3-g2.png)
+    ![](./images/vm101.png)
 
-1. Now, enter the following password and click on **Sign in**.
+1. On the **Sign in to Microsoft Azure** page, enter:
 
-   - Password: <inject key="AzureAdUserPassword"></inject>
+   - **Email/Username:** <inject key="AzureAdUserEmail" enableCopy="true"/>
 
-     ![](./media/gs-lab3-g3.png)
+       ![](./images/sign1.png)
 
-     >**Note:** If you see the Action Required dialog box, then select Ask Later option.
-     
-1. If you see the pop-up **Stay Signed in?**, click No.
+1. Enter the password:
 
-   ![](./media/gs-4.png)
+   - **Password:** <inject key="AzureAdUserPassword" enableCopy="true"/>
 
-1. Welcome to **Azure Portal**! You're now ready to start building your AI-powered call center analytics solution using Azure AI Services, Azure OpenAI, and Power BI for intelligent conversation analysis and visualization.
+      ![](./images/tpwrd.png)
 
-Now, click on the **Next** from lower right corner to move on next page.
+1. Select **No** when prompted to stay signed in.
 
-## Happy Hacking!!
+   ![](./images/sign001.png)
+
+1. You are now ready to start the challenges.
+
+## Support Contact
+
+CloudLabs support is available 24/7 to assist learners and instructors.
+
+- **Email:** cloudlabs-support@spektrasystems.com
+- **Live Chat:** https://cloudlabs.ai/labs-support
+
+Click **Next** at the bottom of the page to proceed to the next page.
+
+   ![](./images/auto-it-gt-gr-g3.png)
